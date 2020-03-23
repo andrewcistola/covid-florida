@@ -1,0 +1,39 @@
+Florida COVID-19 Data
+March 22, 2020 at 6:21pm
+
+This repository was created from the daily report created by the Florida Department of Health for the most up to date COVID-19 information.
+
+This repository contains five items:
+
+1. covid-19-data---daily-report-2020-03-22-1828.pdf
+Raw report downlaoded from DOH at https://floridadisaster.org/globalassets/covid-19-data---daily-report-2020-03-22-1828.pdf
+Since this is the only known source for longitudinal data on cases and deaths and distributed in PDF form, the information was directly copied and pasted to be able to read as a structured data table. THIS IS NOT IDEAL.
+
+2. cases_2020-03-22-1828.txt
+Text file copied from "Coronovirus: line list of cases" wihtin pdf file above. No modificatios were made. Text copied in Windows 10. 
+
+3. deaths_2020-03-22-1828.txt
+Text file copied from "Coronovirus: line list of deaths" wihtin pdf file above. Forward slashes added to dates. Text copied in Windows 10.
+
+4.COVID19 Cases and Deaths from DOH Report March 22 2020 at 621pm
+Excel spreadhseet with line list of cases and deaths. These tavles were assembled from text files above. Within MS excel, text-to-columns fucntions and concatenation was used to place each item in correct cells.
+Modifications were made in order to be ready convert to csv files. Refer to the documentation below on variable names taken from the pdf report. Clarification on defintions will need to be provided by DOH report.
+Variable descriptions used in these tables are identifical for cases and deaths. 
+
+Variable Name - Source from pdf file above, datatype, options
+Case - Observation taken from "Coronovirus: line list of cases", character, Yes 
+Death - Observation taken from "Coronovirus: line list of deaths", character, Yes 
+County - Variable name copied directly from pdf, character
+Age - Variable name copied directly from pdf, integer
+Gender - Variable name copied directly from column pdf, character, Male or Female
+TravelRelated - "Travel related" column in pdf, character, Yes No Unknown
+TravelDetail - "travel detail" column in pdf, character, Countries US States or within FL	
+ContactCase - "Contact with a confirmed case" column in pdf, character, Yes No Unknown
+Jurisdiction - Variable name copied directly from column pdf, FL = "FL resident" Non-FL = "Non-FL resident" NotDIFL = "Not diagnosed/isolated in FL"
+DateCounted - "Date case counted" column in pdf, Short Date, MM/DD/YY
+
+2. cases_2020-03-22-1828.csv
+CSV file ready for importing taken from excel spreadsheet. Variable names have spaces removed, data types are updated.
+
+3. deaths_2020-03-22-1828.csv
+CSV file ready for importing taken from excel spreadsheet. Variable names have spaces removed, data types are updated.

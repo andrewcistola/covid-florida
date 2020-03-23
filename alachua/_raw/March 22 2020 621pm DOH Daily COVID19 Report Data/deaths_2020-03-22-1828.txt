@@ -1,0 +1,14 @@
+Death County Age Gender Travel
+1 Broward 77 Male Unknown Yes FL resident 03/16/20
+2 Broward 96 Female Unknown Unknown FL resident 03/19/20
+3 Broward 92 Male No Unknown FL resident 03/20/20
+4 Clay 70 Male No Yes FL resident 03/14/20
+5 Duval 83 Male No Yes FL resident 03/13/20
+6 Duval 88 Male No Yes FL resident 03/15/20
+7 Lee 77 Female Yes Dominican Republic Yes FL resident 03/07/20
+8 Lee 77 Male No Yes FL resident 03/13/20
+9 Manatee 70 Male No No FL resident 03/16/20
+10 Orange 79 Female Unknown No FL resident 03/15/20
+11 Orange 68 Female Yes Philippines; South Korea Not diagnosedisolated in FL 03/13/20
+12 Palm Beach 88 Male Unknown Unknown FL resident 03/21/20
+13 Santa Rosa 71 Male Yes Egypt; Israel; Jordan No FL resident 03/05/20

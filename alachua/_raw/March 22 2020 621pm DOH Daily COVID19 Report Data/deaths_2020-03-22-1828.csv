@@ -1,0 +1,14 @@
+﻿Death,County,Age,Gender,TravelRelated,TravelDetail,ContactCase,Jurisdiction,DateCounted
+Yes,Broward,77,Male,Unknown,,Yes,FL,3/16/20
+Yes,Broward,96,Female,Unknown,,Unknown,FL,3/19/20
+Yes,Broward,92,Male,No,,Unknown,FL,3/20/20
+Yes,Clay,70,Male,No,,Yes,FL,3/14/20
+Yes,Duval,83,Male,No,,Yes,FL,3/13/20
+Yes,Duval,88,Male,No,,Yes,FL,3/15/20
+Yes,Lee,77,Female,Yes,Dominican Republic,Yes,FL,3/7/20
+Yes,Lee,77,Male,No,,Yes,FL,3/13/20
+Yes,Manatee,70,Male,No,,No,FL,3/16/20
+Yes,Orange,79,Female,Unknown,,No,FL,3/15/20
+Yes,Orange,68,Female,Yes,Philippines; South Korea,,NotDIFL,3/13/20
+Yes,Palm Beach,88,Male,Unknown,,Unknown,FL,3/21/20
+Yes,Santa Rosa,71,Male,Yes,Egypt; Isrel; Jordan,No,FL,3/5/20
