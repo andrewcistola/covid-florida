@@ -1,0 +1,214 @@
+,County,Week,Cases,Rate,Change,Double
+0,Alachua,1,0,0,0,No
+1,Alachua,2,4,1.516570428,4,Yes
+2,Alachua,3,31,11.75342081,27,Yes
+3,Baker,1,0,0,0,No
+4,Baker,2,0,0,0,No
+5,Baker,3,2,7.275902212,2,Yes
+6,Bay,1,0,0,0,No
+7,Bay,2,0,0,0,No
+8,Bay,3,1,0.548793204,1,Yes
+9,Bradford,1,0,0,0,No
+10,Bradford,2,0,0,0,No
+11,Bradford,3,1,3.560873126,1,Yes
+12,Brevard,1,0,0,0,No
+13,Brevard,2,0,0,0,No
+14,Brevard,3,7,1.198527523,7,Yes
+15,Broward,1,3,0.157628428,0,No
+16,Broward,2,44,2.311883607,41,Yes
+17,Broward,3,170,8.932277573,126,Yes
+18,Calhoun,1,0,0,0,No
+19,Calhoun,2,0,0,0,No
+20,Calhoun,3,0,0,0,No
+22,Charlotte,2,0,0,-1,No
+21,Charlotte,1,1,0.570083175,0,No
+23,Charlotte,3,1,0.570083175,1,Yes
+24,Citrus,1,0,0,0,No
+25,Citrus,2,1,0.68887603,1,Yes
+26,Citrus,3,7,4.822132209,6,Yes
+27,Clay,1,0,0,0,No
+28,Clay,2,3,1.404724557,3,Yes
+29,Clay,3,4,1.872966076,1,Yes
+30,Collier,1,0,0,0,No
+31,Collier,2,7,1.904912224,7,Yes
+32,Collier,3,26,7.075388262,19,Yes
+33,Columbia,1,0,0,0,No
+34,Columbia,2,0,0,0,No
+35,Columbia,3,2,2.874967657,2,Yes
+36,Dade,1,1,0,0,No
+37,Dade,2,28,0,27,Yes
+38,Dade,3,199,0,171,Yes
+39,Desoto,1,0,0,0,No
+40,Desoto,2,0,0,0,No
+41,Desoto,3,1,2.782415136,1,Yes
+42,Dixie,1,0,0,0,No
+43,Dixie,2,0,0,0,No
+44,Dixie,3,0,0,0,No
+45,Duval,1,0,0,0,No
+46,Duval,2,5,0.523859715,5,Yes
+47,Duval,3,34,3.562246059,29,Yes
+48,Escambia,1,0,0,0,No
+49,Escambia,2,1,0.31540667,1,Yes
+50,Escambia,3,3,0.946220009,2,Yes
+51,Flagler,1,0,0,0,No
+52,Flagler,2,0,0,0,No
+53,Flagler,3,1,0.921820411,1,Yes
+54,Florida,1,19,0.906616151,0,No
+55,Florida,2,150,7.157495926,131,Yes
+56,Florida,3,838,39.98654391,688,Yes
+57,Franklin,1,0,0,0,No
+58,Franklin,2,0,0,0,No
+59,Franklin,3,0,0,0,No
+61,Gadsden,2,0,0,-1,No
+62,Gadsden,3,0,0,0,No
+60,Gadsden,1,1,2.075851618,0,No
+63,Gilchrist,1,0,0,0,No
+64,Gilchrist,2,0,0,0,No
+65,Gilchrist,3,0,0,0,No
+66,Glades,1,0,0,0,No
+67,Glades,2,0,0,0,No
+68,Glades,3,0,0,0,No
+69,Gulf,1,0,0,0,No
+70,Gulf,2,0,0,0,No
+71,Gulf,3,0,0,0,No
+72,Hamilton,1,0,0,0,No
+73,Hamilton,2,0,0,0,No
+74,Hamilton,3,0,0,0,No
+75,Hardee,1,0,0,0,No
+76,Hardee,2,0,0,0,No
+77,Hardee,3,0,0,0,No
+78,Hendry,1,0,0,0,No
+79,Hendry,2,0,0,0,No
+80,Hendry,3,0,0,0,No
+81,Hernando,1,0,0,0,No
+82,Hernando,2,0,0,0,No
+83,Hernando,3,5,2.696566193,5,Yes
+84,Highlands,1,0,0,0,No
+85,Highlands,2,0,0,0,No
+86,Highlands,3,1,0.967894925,1,Yes
+87,Hillsborough,1,2,0.140916025,0,No
+88,Hillsborough,2,4,0.281832049,2,Yes
+89,Hillsborough,3,52,3.66381664,48,Yes
+90,Holmes,1,0,0,0,No
+91,Holmes,2,0,0,0,No
+92,Holmes,3,0,0,0,No
+93,Indian River,1,0,0,0,No
+94,Indian River,2,0,0,0,No
+95,Indian River,3,8,5.260423859,8,Yes
+96,Jackson,1,0,0,0,No
+97,Jackson,2,0,0,0,No
+98,Jackson,3,1,1.972814615,1,Yes
+99,Jefferson,1,0,0,0,No
+100,Jefferson,2,0,0,0,No
+101,Jefferson,3,0,0,0,No
+102,Lafayette,1,0,0,0,No
+103,Lafayette,2,0,0,0,No
+104,Lafayette,3,0,0,0,No
+105,Lake,1,0,0,0,No
+106,Lake,2,1,0.29209361,1,Yes
+107,Lake,3,5,1.460468051,4,Yes
+108,Lee,1,2,0.277372121,0,No
+109,Lee,2,5,0.693430303,3,Yes
+110,Lee,3,19,2.63503515,14,Yes
+112,Leon,2,0,0,-1,No
+111,Leon,1,1,0.344562629,0,No
+113,Leon,3,4,1.378250518,4,Yes
+114,Levy,1,0,0,0,No
+115,Levy,2,0,0,0,No
+116,Levy,3,0,0,0,No
+117,Liberty,1,0,0,0,No
+118,Liberty,2,0,0,0,No
+119,Liberty,3,0,0,0,No
+120,Madison,1,0,0,0,No
+121,Madison,2,0,0,0,No
+122,Madison,3,0,0,0,No
+123,Manatee,1,2,0.524836579,0,No
+124,Manatee,2,3,0.787254869,1,Yes
+125,Manatee,3,8,2.099346316,5,Yes
+126,Marion,1,0,0,0,No
+127,Marion,2,0,0,0,No
+128,Marion,3,3,0.844297474,3,Yes
+129,Martin,1,0,0,0,No
+130,Martin,2,0,0,0,No
+131,Martin,3,2,1.284480267,2,Yes
+135,Monroe,1,0,0,0,No
+136,Monroe,2,0,0,0,No
+137,Monroe,3,1,1.306608827,1,Yes
+138,Nassau,1,0,0,0,No
+140,Nassau,3,0,0,-1,No
+139,Nassau,2,1,1.203007519,1,Yes
+142,Okaloosa,2,0,0,-2,No
+141,Okaloosa,1,2,1.008018789,0,No
+143,Okaloosa,3,12,6.048112737,12,Yes
+144,Okeechobee,1,0,0,0,No
+145,Okeechobee,2,0,0,0,No
+146,Okeechobee,3,0,0,0,No
+147,Orange,1,0,0,0,No
+148,Orange,2,6,0.437813356,6,Yes
+149,Orange,3,27,1.970160101,21,Yes
+150,Osceola,1,0,0,0,No
+151,Osceola,2,5,1.387247313,5,Yes
+152,Osceola,3,19,5.271539789,14,Yes
+153,Palm Beach,1,1,0.069334616,0,No
+154,Palm Beach,2,9,0.624011548,8,Yes
+155,Palm Beach,3,62,4.298746222,53,Yes
+156,Pasco,1,0,0,0,No
+157,Pasco,2,2,0.385624683,2,Yes
+158,Pasco,3,9,1.735311074,7,Yes
+159,Pinellas,1,0,0,0,No
+160,Pinellas,2,4,0.411937114,4,Yes
+161,Pinellas,3,34,3.501465466,30,Yes
+162,Polk,1,0,0,0,No
+163,Polk,2,0,0,0,No
+164,Polk,3,11,1.61363433,11,Yes
+165,Putnam,1,0,0,0,No
+166,Putnam,2,0,0,0,No
+167,Putnam,3,2,2.723979189,2,Yes
+168,Saint Johns,1,0,0,0,No
+169,Saint Johns,2,0,0,0,No
+170,Saint Johns,3,0,0,0,No
+171,Saint Lucie,1,0,0,0,No
+172,Saint Lucie,2,0,0,0,No
+173,Saint Lucie,3,0,0,0,No
+175,Santa Rosa,2,0,0,-1,No
+174,Santa Rosa,1,1,0.56963179,0,No
+176,Santa Rosa,3,3,1.70889537,3,Yes
+177,Sarasota,1,0,0,0,No
+178,Sarasota,2,4,0.961778906,4,Yes
+179,Sarasota,3,13,3.125781445,9,Yes
+180,Seminole,1,0,0,0,No
+181,Seminole,2,4,0.862762522,4,Yes
+182,Seminole,3,15,3.235359459,11,Yes
+183,St. Johns,1,0,0,0,No
+184,St. Johns,2,3,0,3,Yes
+185,St. Johns,3,13,0,10,Yes
+186,St. Lucie,1,0,0,0,No
+187,St. Lucie,2,0,0,0,No
+188,St. Lucie,3,3,0,3,Yes
+189,Sumter,1,0,0,0,No
+190,Sumter,2,0,0,0,No
+191,Sumter,3,5,3.975226389,5,Yes
+192,Suwannee,1,0,0,0,No
+193,Suwannee,2,0,0,0,No
+194,Suwannee,3,0,0,0,No
+195,Taylor,1,0,0,0,No
+196,Taylor,2,0,0,0,No
+197,Taylor,3,0,0,0,No
+198,Union,1,0,0,0,No
+199,Union,2,0,0,0,No
+200,Union,3,0,0,0,No
+201,Unknown,1,0,0,0,No
+202,Unknown,2,0,0,0,No
+203,Unknown,3,1,0,1,Yes
+204,Volusia,1,2,0.375286625,0,No
+205,Volusia,2,6,1.125859875,4,Yes
+206,Volusia,3,6,1.125859875,0,Yes
+207,Wakulla,1,0,0,0,No
+208,Wakulla,2,0,0,0,No
+209,Wakulla,3,0,0,0,No
+210,Walton,1,0,0,0,No
+211,Walton,2,0,0,0,No
+212,Walton,3,4,5.888761299,4,Yes
+213,Washington,1,0,0,0,No
+214,Washington,2,0,0,0,No
+215,Washington,3,0,0,0,No
