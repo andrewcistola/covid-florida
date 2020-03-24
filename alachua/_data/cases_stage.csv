@@ -1,12 +1,6 @@
 ﻿Case,County,Age,Gender,TravelRelated,TravelDetail,ContactCase,Jurisdiction,DateCounted
 Yes,Hillsborough,29,Female,Yes,Italy     ,Yes,FL,3/2/20
 Yes,Manatee,63,Male,No,     ,Yes,FL,3/2/20
-Yes,Hillsborough,22,Female,Yes,Italy     ,Yes,Non-FL,3/3/20
-Yes,Gadsden,54,Male,Yes,Japan     ,Unknown,NotDIFL,3/3/20
-Yes,Dade,64,Male,Yes,Japan     ,Yes,NotDIFL,3/4/20
-Yes,Leon,59,Female,Yes,Japan     ,Unknown,NotDIFL,3/4/20
-Yes,Okaloosa,66,Female,Yes,Japan     ,Yes,NotDIFL,3/4/20
-Yes,Palm Beach,71,Female,Yes,Japan     ,Yes,NotDIFL,3/4/20
 Yes,Santa Rosa,71,Male,Yes,Egypt Israel Jordan   ,No,FL,3/5/20
 Yes,Broward,65,Male,Yes,Cayman Islands    ,No,FL,3/7/20
 Yes,Broward,75,Male,No,     ,Yes,FL,3/7/20
@@ -20,7 +14,6 @@ Yes,Okaloosa,61,Female,Yes,CA MEXICO    ,Yes,FL,3/9/20
 Yes,Volusia,60,Female,Yes,Egypt Germany Israel   ,Yes,FL,3/9/20
 Yes,Broward,68,Female,No,     ,Yes,FL,3/10/20
 Yes,Nassau,68,Male,Yes,Germany MA    ,Yes,FL,3/10/20
-Yes,Alachua,68,Female,Yes,GA     ,No,Non-FL,3/10/20
 Yes,Collier,73,Male,Yes,Egypt     ,Unknown,FL,3/11/20
 Yes,Collier,64,Female,Yes,Egypt     ,Unknown,FL,3/11/20
 Yes,Collier,68,Female,Yes,Egypt     ,Yes,FL,3/11/20
@@ -32,8 +25,6 @@ Yes,Broward,65,Male,No,     ,Yes,FL,3/12/20
 Yes,Broward,61,Male,Yes,Italy     ,Unknown,FL,3/12/20
 Yes,Dade,56,Male,Yes,Iran     ,Yes,FL,3/12/20
 Yes,Seminole,68,Male,Yes,Egypt Jordan    ,Yes,FL,3/12/20
-Yes,Lee,57,Male,Yes,FL France United Kingdom   ,Unknown,Non-FL,3/12/20
-Yes,St. Johns,63,Male,Yes,NY     ,No,Non-FL,3/12/20
 Yes,Alachua,24,Male,Yes,Portugal     ,No,FL,3/13/20
 Yes,Broward,68,Female,No,     ,Yes,FL,3/13/20
 Yes,Broward,36,Male,No,     ,Yes,FL,3/13/20
@@ -55,9 +46,6 @@ Yes,Palm Beach,74,Male,Yes,Belgium FL    ,No,FL,3/13/20
 Yes,Palm Beach,73,Male,Yes,Egypt Germany    ,Yes,FL,3/13/20
 Yes,Sarasota,50,Female,Yes,NY     ,No,FL,3/13/20
 Yes,Volusia,70,Female,Yes,Egypt Jordan    ,Yes,FL,3/13/20
-Yes,Osceola,65,Male,Yes,Canada     ,No,Non-FL,3/13/20
-Yes,Sarasota,70,Male,No,     ,No,Non-FL,3/13/20
-Yes,Orange,68,Female,Yes,Philippines South Korea   ,Yes,NotDIFL,3/13/20
 Yes,Broward,20,Female,Yes,Ireland     ,Yes,FL,3/14/20
 Yes,Broward,58,Male,No,     ,Yes,FL,3/14/20
 Yes,Broward,64,Male,Yes,France GA NC Spain  ,Yes,FL,3/14/20
@@ -97,12 +85,6 @@ Yes,St. Johns,64,Female,No,     ,No,FL,3/14/20
 Yes,Volusia,89,Female,No,     ,Yes,FL,3/14/20
 Yes,Volusia,39,Male,Yes,Trinidad and Tobago   ,Yes,FL,3/14/20
 Yes,Volusia,71,Male,Yes,Egypt Jordan    ,Yes,FL,3/14/20
-Yes,Alachua,69,Male,Yes,Sweden     ,No,Non-FL,3/14/20
-Yes,Broward,41,Male,Yes,Spain     ,Unknown,Non-FL,3/14/20
-Yes,Broward,19,Female,Yes,Ireland     ,Yes,Non-FL,3/14/20
-Yes,Broward,48,Male,Yes,GA     ,,Non-FL,3/14/20
-Yes,Broward,19,Male,Yes,Ireland     ,Yes,Non-FL,3/14/20
-Yes,Collier,79,Female,Yes,CT     ,No,Non-FL,3/14/20
 Yes,Broward,65,Male,Yes,DC     ,Unknown,FL,3/15/20
 Yes,Broward,20,Female,Yes,Ireland     ,Yes,FL,3/15/20
 Yes,Broward,74,Male,No,     ,Yes,FL,3/15/20
@@ -132,10 +114,6 @@ Yes,Duval,88,Male,No,     ,Yes,FL,3/15/20
 Yes,Duval,66,Male,No,     ,Yes,FL,3/15/20
 Yes,Orange,79,Female,Unknown,     ,No,FL,3/15/20
 Yes,Volusia,48,Female,Yes,DC FL    ,No,FL,3/15/20
-Yes,Broward,19,Female,Yes,Ireland     ,Yes,Non-FL,3/15/20
-Yes,Broward,48,Female,Yes,France IL NY TX  ,Unknown,Non-FL,3/15/20
-Yes,Dade,42,Male,Yes,Brazil FL TX   ,No,Non-FL,3/15/20
-Yes,Lee,65,Female,Yes,FL JAMAICA    ,Yes,Non-FL,3/15/20
 Yes,Broward,77,Male,Unknown,     ,Yes,FL,3/16/20
 Yes,Broward,51,Female,Yes,Colombia     ,Yes,FL,3/16/20
 Yes,Broward,76,Male,No,     ,Unknown,FL,3/16/20
@@ -164,10 +142,6 @@ Yes,Pinellas,58,Male,No,     ,Yes,FL,3/16/20
 Yes,Sarasota,87,Male,No,     ,No,FL,3/16/20
 Yes,St. Johns,49,Male,Yes,Europe Hungary    ,No,FL,3/16/20
 Yes,Volusia,37,Female,No,     ,Yes,FL,3/16/20
-Yes,Alachua,64,Female,Yes,FL NY    ,No,Non-FL,3/16/20
-Yes,Dade,66,Male,Yes,FL NY    ,No,Non-FL,3/16/20
-Yes,Dade,69,Female,Unknown,     ,Yes,Non-FL,3/16/20
-Yes,Sarasota,80,Male,No,     ,Yes,Non-FL,3/16/20
 Yes,Alachua,21,Female,Yes,NY     ,No,FL,3/17/20
 Yes,Alachua,22,Male,Yes,Canada   NY PA ,No,FL,3/17/20
 Yes,Brevard,76,Female,Yes,NY     ,Yes,FL,3/17/20
@@ -231,13 +205,6 @@ Yes,Pinellas,30,Male,Yes,FL Mexico    ,No,FL,3/17/20
 Yes,Polk,44,Female,No,     ,Unknown,FL,3/17/20
 Yes,Seminole,45,Female,No,     ,Unknown,FL,3/17/20
 Yes,Volusia,60,Female,No,     ,Yes,FL,3/17/20
-Yes,Dade,51,Male,Yes,Bahamas CA IL   ,Unknown,Non-FL,3/17/20
-Yes,Dade,33,Male,Unknown,     ,Unknown,Non-FL,3/17/20
-Yes,Duval,25,Female,Yes,Australia FL TN   ,Unknown,Non-FL,3/17/20
-Yes,Hillsborough,28,Male,Unknown,     ,Unknown,Non-FL,3/17/20
-Yes,Orange,28,Female,Unknown,     ,Unknown,Non-FL,3/17/20
-Yes,Osceola,20,Female,Yes,Spain     ,No,Non-FL,3/17/20
-Yes,Seminole,70,Male,Yes,NY     ,Unknown,Non-FL,3/17/20
 Yes,Alachua,39,Female,Yes,GA     ,Unknown,FL,3/18/20
 Yes,Alachua,51,Male,Yes,Bahamas     ,,FL,3/18/20
 Yes,Alachua,50,Female,Yes,Bahamas    FL ,Yes,FL,3/18/20
@@ -338,13 +305,6 @@ Yes,Seminole,55,Male,Yes,FL NY    ,No,FL,3/18/20
 Yes,Seminole,57,Female,Yes,Egypt     ,Yes,FL,3/18/20
 Yes,St. Johns,53,Female,Yes,CO     ,Yes,FL,3/18/20
 Yes,Sumter,68,Male,Yes,Egypt     ,Yes,FL,3/18/20
-Yes,Collier,64,Male,Yes,FL HI    ,No,Non-FL,3/18/20
-Yes,Dade,80,Female,Yes,Israel Venezuela    ,No,Non-FL,3/18/20
-Yes,Duval,46,Male,Yes,FL MN    ,No,Non-FL,3/18/20
-Yes,Leon,48,Female,Yes,GA     ,Unknown,Non-FL,3/18/20
-Yes,Palm Beach,73,Male,Yes,NY     ,Yes,Non-FL,3/18/20
-Yes,Palm Beach,26,Female,Unknown,     ,Yes,Non-FL,3/18/20
-Yes,Walton,77,Female,Yes,FL MI    ,Unknown,Non-FL,3/18/20
 Yes,Alachua,42,Female,Yes,Dominican   Republic FL ,No,FL,3/19/20
 Yes,Alachua,27,Female,No,     ,No,FL,3/19/20
 Yes,Brevard,64,Female,Yes,DC FL NY PA  ,Unknown,FL,3/19/20
@@ -422,17 +382,6 @@ Yes,Polk,88,Male,No,     ,No,FL,3/19/20
 Yes,Polk,55,Male,Yes,Europe FL Spain   ,No,FL,3/19/20
 Yes,Sarasota,53,Male,No,     ,Yes,FL,3/19/20
 Yes,Sumter,66,Male,No,     ,No,FL,3/19/20
-Yes,Broward,33,Male,Yes,NY     ,Unknown,Non-FL,3/19/20
-Yes,Dade,60,Female,Unknown,     ,Unknown,Non-FL,3/19/20
-Yes,Dade,36,Male,Yes,Spain     ,No,Non-FL,3/19/20
-Yes,Dade,64,Male,Unknown,     ,Unknown,Non-FL,3/19/20
-Yes,Jackson,33,Male,Yes,AL FL GA LA Mexico TX,Unknown,Non-FL,3/19/20
-Yes,Lee,72,Female,No,     ,Unknown,Non-FL,3/19/20
-Yes,Orange,22,Female,Yes,FL NC    ,Unknown,Non-FL,3/19/20
-Yes,Osceola,39,Male,Unknown,     ,No,Non-FL,3/19/20
-Yes,Palm Beach,73,Male,Yes,NJ     ,Unknown,Non-FL,3/19/20
-Yes,Palm Beach,78,Female,Unknown,     ,Unknown,Non-FL,3/19/20
-Yes,Sarasota,78,Female,No,     ,Yes,Non-FL,3/19/20
 Yes,Alachua,68,Female,,     ,Unknown,FL,3/20/20
 Yes,Alachua,22,Male,No,     ,Yes,FL,3/20/20
 Yes,Alachua,47,Female,No,     ,Yes,FL,3/20/20
@@ -575,14 +524,6 @@ Yes,St. Johns,68,Male,No,     ,No,FL,3/20/20
 Yes,Volusia,62,Male,No,     ,Unknown,FL,3/20/20
 Yes,Walton,49,Male,No,     ,No,FL,3/20/20
 Yes,Walton,20,Female,Yes,FL Spain    ,Unknown,FL,3/20/20
-Yes,Broward,20,Female,Unknown,     ,Yes,Non-FL,3/20/20
-Yes,Collier,75,Male,No,     ,No,Non-FL,3/20/20
-Yes,Dade,46,Male,No,     ,Yes,Non-FL,3/20/20
-Yes,Palm Beach,23,Female,Yes,FL Jamaica    ,No,Non-FL,3/20/20
-Yes,Palm Beach,20,Female,Unknown,     ,Unknown,Non-FL,3/20/20
-Yes,Palm Beach,29,Male,Unknown,     ,Yes,Non-FL,3/20/20
-Yes,Pasco,73,Female,Yes,Spain     ,No,Non-FL,3/20/20
-Yes,Pinellas,59,Female,Yes,Bahamas Ecuador FL   ,No,Non-FL,3/20/20
 Yes,Alachua,54,Male,,     ,Unknown,FL,3/21/20
 Yes,Alachua,23,Male,,     ,Unknown,FL,3/21/20
 Yes,Alachua,55,Male,,     ,Unknown,FL,3/21/20
@@ -789,18 +730,6 @@ Yes,Sumter,71,Male,Yes,BELIZE FL HONDURAS MEXICO  ,No,FL,3/21/20
 Yes,Sumter,67,Female,Yes,BELIZE FL HONDURAS MEXICO  ,No,FL,3/21/20
 Yes,Volusia,23,Female,Yes,SPAIN     ,Unknown,FL,3/21/20
 Yes,Volusia,32,Female,No,     ,Unknown,FL,3/21/20
-Yes,Bay,47,Male,Yes,TX     ,Unknown,Non-FL,3/21/20
-Yes,Dade,48,Male,Yes,NY     ,Yes,Non-FL,3/21/20
-Yes,Hillsborough,61,Male,Yes,GA     ,Unknown,Non-FL,3/21/20
-Yes,Hillsborough,20,Female,No,     ,Yes,Non-FL,3/21/20
-Yes,Indian River,25,Female,Yes,NY     ,No,Non-FL,3/21/20
-Yes,Orange,33,Female,Yes,Peru     ,,Non-FL,3/21/20
-Yes,Orange,34,Male,Yes,Peru     ,,Non-FL,3/21/20
-Yes,Orange,73,Female,,     ,Unknown,Non-FL,3/21/20
-Yes,Sarasota,75,Male,Yes,FL NY    ,Yes,Non-FL,3/21/20
-Yes,Sarasota,73,Female,Yes,FL NY    ,Yes,Non-FL,3/21/20
-Yes,Unknown,36,Male,Yes,GA     ,Unknown,Non-FL,3/21/20
-Yes,Walton,22,Male,,     ,Unknown,Non-FL,3/21/20
 Yes,Alachua,25,Female,,     ,Unknown,FL,3/22/20
 Yes,Alachua,22,Male,,     ,Unknown,FL,3/22/20
 Yes,Alachua,30,Female,,     ,Unknown,FL,3/22/20
@@ -1001,8 +930,79 @@ Yes,St. Lucie,77,Male,Yes,Dominican Republic Turks and Caicos    Yes,,FL,3/22/20
 Yes,Sumter,68,Female,No,     ,Yes,FL,3/22/20
 Yes,Volusia,66,Female,Yes,IRELAND     ,Unknown,FL,3/22/20
 Yes,Volusia,65,Male,Yes,IRELAND     ,Unknown,FL,3/22/20
+Yes,Hillsborough,22,Female,Yes,Italy     ,Yes,Non-FL,3/3/20
+Yes,Alachua,68,Female,Yes,GA     ,No,Non-FL,3/10/20
+Yes,Lee,57,Male,Yes,FL France United Kingdom   ,Unknown,Non-FL,3/12/20
+Yes,St. Johns,63,Male,Yes,NY     ,No,Non-FL,3/12/20
+Yes,Osceola,65,Male,Yes,Canada     ,No,Non-FL,3/13/20
+Yes,Sarasota,70,Male,No,     ,No,Non-FL,3/13/20
+Yes,Alachua,69,Male,Yes,Sweden     ,No,Non-FL,3/14/20
+Yes,Broward,41,Male,Yes,Spain     ,Unknown,Non-FL,3/14/20
+Yes,Broward,19,Female,Yes,Ireland     ,Yes,Non-FL,3/14/20
+Yes,Broward,48,Male,Yes,GA     ,,Non-FL,3/14/20
+Yes,Broward,19,Male,Yes,Ireland     ,Yes,Non-FL,3/14/20
+Yes,Collier,79,Female,Yes,CT     ,No,Non-FL,3/14/20
+Yes,Broward,19,Female,Yes,Ireland     ,Yes,Non-FL,3/15/20
+Yes,Broward,48,Female,Yes,France IL NY TX  ,Unknown,Non-FL,3/15/20
+Yes,Dade,42,Male,Yes,Brazil FL TX   ,No,Non-FL,3/15/20
+Yes,Lee,65,Female,Yes,FL JAMAICA    ,Yes,Non-FL,3/15/20
+Yes,Alachua,64,Female,Yes,FL NY    ,No,Non-FL,3/16/20
+Yes,Dade,66,Male,Yes,FL NY    ,No,Non-FL,3/16/20
+Yes,Dade,69,Female,Unknown,     ,Yes,Non-FL,3/16/20
+Yes,Sarasota,80,Male,No,     ,Yes,Non-FL,3/16/20
+Yes,Dade,51,Male,Yes,Bahamas CA IL   ,Unknown,Non-FL,3/17/20
+Yes,Dade,33,Male,Unknown,     ,Unknown,Non-FL,3/17/20
+Yes,Duval,25,Female,Yes,Australia FL TN   ,Unknown,Non-FL,3/17/20
+Yes,Hillsborough,28,Male,Unknown,     ,Unknown,Non-FL,3/17/20
+Yes,Orange,28,Female,Unknown,     ,Unknown,Non-FL,3/17/20
+Yes,Osceola,20,Female,Yes,Spain     ,No,Non-FL,3/17/20
+Yes,Seminole,70,Male,Yes,NY     ,Unknown,Non-FL,3/17/20
+Yes,Collier,64,Male,Yes,FL HI    ,No,Non-FL,3/18/20
+Yes,Dade,80,Female,Yes,Israel Venezuela    ,No,Non-FL,3/18/20
+Yes,Duval,46,Male,Yes,FL MN    ,No,Non-FL,3/18/20
+Yes,Leon,48,Female,Yes,GA     ,Unknown,Non-FL,3/18/20
+Yes,Palm Beach,73,Male,Yes,NY     ,Yes,Non-FL,3/18/20
+Yes,Palm Beach,26,Female,Unknown,     ,Yes,Non-FL,3/18/20
+Yes,Walton,77,Female,Yes,FL MI    ,Unknown,Non-FL,3/18/20
+Yes,Broward,33,Male,Yes,NY     ,Unknown,Non-FL,3/19/20
+Yes,Dade,60,Female,Unknown,     ,Unknown,Non-FL,3/19/20
+Yes,Dade,36,Male,Yes,Spain     ,No,Non-FL,3/19/20
+Yes,Dade,64,Male,Unknown,     ,Unknown,Non-FL,3/19/20
+Yes,Jackson,33,Male,Yes,AL FL GA LA Mexico TX,Unknown,Non-FL,3/19/20
+Yes,Lee,72,Female,No,     ,Unknown,Non-FL,3/19/20
+Yes,Orange,22,Female,Yes,FL NC    ,Unknown,Non-FL,3/19/20
+Yes,Osceola,39,Male,Unknown,     ,No,Non-FL,3/19/20
+Yes,Palm Beach,73,Male,Yes,NJ     ,Unknown,Non-FL,3/19/20
+Yes,Palm Beach,78,Female,Unknown,     ,Unknown,Non-FL,3/19/20
+Yes,Sarasota,78,Female,No,     ,Yes,Non-FL,3/19/20
+Yes,Broward,20,Female,Unknown,     ,Yes,Non-FL,3/20/20
+Yes,Collier,75,Male,No,     ,No,Non-FL,3/20/20
+Yes,Dade,46,Male,No,     ,Yes,Non-FL,3/20/20
+Yes,Palm Beach,23,Female,Yes,FL Jamaica    ,No,Non-FL,3/20/20
+Yes,Palm Beach,20,Female,Unknown,     ,Unknown,Non-FL,3/20/20
+Yes,Palm Beach,29,Male,Unknown,     ,Yes,Non-FL,3/20/20
+Yes,Pasco,73,Female,Yes,Spain     ,No,Non-FL,3/20/20
+Yes,Pinellas,59,Female,Yes,Bahamas Ecuador FL   ,No,Non-FL,3/20/20
+Yes,Bay,47,Male,Yes,TX     ,Unknown,Non-FL,3/21/20
+Yes,Dade,48,Male,Yes,NY     ,Yes,Non-FL,3/21/20
+Yes,Hillsborough,61,Male,Yes,GA     ,Unknown,Non-FL,3/21/20
+Yes,Hillsborough,20,Female,No,     ,Yes,Non-FL,3/21/20
+Yes,Indian River,25,Female,Yes,NY     ,No,Non-FL,3/21/20
+Yes,Orange,33,Female,Yes,Peru     ,,Non-FL,3/21/20
+Yes,Orange,34,Male,Yes,Peru     ,,Non-FL,3/21/20
+Yes,Orange,73,Female,,     ,Unknown,Non-FL,3/21/20
+Yes,Sarasota,75,Male,Yes,FL NY    ,Yes,Non-FL,3/21/20
+Yes,Sarasota,73,Female,Yes,FL NY    ,Yes,Non-FL,3/21/20
+Yes,Unknown,36,Male,Yes,GA     ,Unknown,Non-FL,3/21/20
+Yes,Walton,22,Male,,     ,Unknown,Non-FL,3/21/20
 Yes,Broward,56,Female,,     ,Unknown,Non-FL,3/22/20
 Yes,Broward,84,Female,,     ,Unknown,Non-FL,3/22/20
 Yes,Broward,47,Male,Yes,FL MA    ,Unknown,Non-FL,3/22/20
 Yes,Collier,17,Female,Yes,United Kingdom     ,No,Non-FL,3/22/20
 Yes,Pinellas,28,Female,Yes,NY     ,Yes,Non-FL,3/22/20
+Yes,Gadsden,54,Male,Yes,Japan     ,Unknown,NotDIFL,3/3/20
+Yes,Dade,64,Male,Yes,Japan     ,Yes,NotDIFL,3/4/20
+Yes,Leon,59,Female,Yes,Japan     ,Unknown,NotDIFL,3/4/20
+Yes,Okaloosa,66,Female,Yes,Japan     ,Yes,NotDIFL,3/4/20
+Yes,Palm Beach,71,Female,Yes,Japan     ,Yes,NotDIFL,3/4/20
+Yes,Orange,68,Female,Yes,Philippines South Korea   ,Yes,NotDIFL,3/13/20

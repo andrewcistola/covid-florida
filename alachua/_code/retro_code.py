@@ -9,7 +9,7 @@ import numpy as np # Incldued in every code script for DC!
 import scipy as st # Incldued in every code script for DC!
 
 ### Set working directory to subproject folder
-os.chdir("C:/Users/drewc/GitHub/mylibrary/templates") # Set wd to project repository
+os.chdir("C:/Users/drewc/GitHub/my-library/templates") # Set wd to project repository
 
 #################### Break ####################
 
@@ -23,9 +23,6 @@ import matplotlib.pyplot as plt
 
 ### Import CMS Data
 df_cms = pd.read_csv("_data/health_mspb_hospital_stage.csv", encoding = "ISO-8859-1") # Import dataset saved as csv in _data folder
-
-### Import State Shape File
-gdf_state = gp.read_file("_data/health_maps_state_stage.shp")
 
 ### Verify CMS
 df_cms.info() # Get class, memory, and column info: names, data types, obs.
