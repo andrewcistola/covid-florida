@@ -1,7 +1,5 @@
 ![](_new/total_daily.jpg)
 
-![](_new/new_daily.jpeg)
-
 # COVID-19 in Florida
 
 ## Most Recent Retrospective Data
