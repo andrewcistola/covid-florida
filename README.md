@@ -1,4 +1,4 @@
-![](_new/total_daily.jpg)
+![](_new/total_daily.jpeg)
 
 # COVID-19 in Florida
 
