@@ -9,9 +9,9 @@ Because the public data has been disseminated in PDF form, some transcription an
 Using the code incldued in the repository, below are the charts created with the most recent public information. 
 Alachua County and Broward County are included for reference since they are locations with the highest rates and of interest to the author (lives in Alachua County). 
 
-![](_mar241012/_fig/total_daily.jpg)
+![](_new/total_daily.jpg)
 
-![](_mar241012/_fig/new_daily.jpg)
+![](_new/new_daily.jpeg)
 
 ## Disclaimer
 While the author (Andrew Cistola) is a Florida DOH employee and a University of Florida PhD student, these are NOT official publications by the Florida DOH, the University of Florida, or any other agency. 
