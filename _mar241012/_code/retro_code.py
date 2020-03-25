@@ -9,7 +9,7 @@ import numpy as np # Incldued in every code script for DC!
 import scipy as st # Incldued in every code script for DC!
 
 ### Set working directory to subproject folder
-os.chdir("C:/Users/drewc/GitHub/covid-florida/alachua") # Set wd to project repository
+os.chdir("C:/Users/drewc/GitHub/covid-florida/_mar241012") # Set wd to project repository
 
 #################### Break ####################
 
@@ -106,7 +106,6 @@ df_sort["Double"][df_sort["Cases"] == 0] = "No"
 df_sort["Change"][df_sort["Week"] == 1] = 0
 
 df_sort["Increase"] = df_sort["Cases"] / df_sort["Change"] * 100
-df_sort["Total"] = df_sort["Rate"] + df_sort["Rate"].shift(1)
 
 df_week = df_sort
 
@@ -118,27 +117,23 @@ df_sort = df_join2.sort_values(by = ["County", "Day"], ascending = True) # Sort 
 
 df_sort["Change"] = df_sort["Cases"] - df_sort["Cases"].shift(1)
 df_sort["Double"] = np.where(df_sort["Cases"] >= df_sort["Cases"].shift(1), "Yes", "No")
-df_sort["Total"] = df_sort["Rate"] + df_sort["Rate"].shift(1)
 
-df_sort["Double"][df_sort["Day"] == 1] = "No"
+df_sort["Double"][df_sort["Day"] == 0] = "No"
 df_sort["Double"][df_sort["Cases"] == 0] = "No"
 df_sort["Change"][df_sort["Day"] == 0] = 0
-df_sort["Total"][df_sort["Day"] == 0] = 0
 
 df_day = df_sort
-
 df_day.to_csv(r"_data/day_raw.csv") # Clean in excel and select variable
 
-df_al = df_day[df_day["County"].str.contains("Alachua")]
+df_br = df_day[df_day["County"].str.contains("Broward")]
+df_br["Total"] = df_br["Rate"].cumsum()
 
+df_al = df_day[df_day["County"].str.contains("Alachua")]
+df_al["Total"] = df_al["Rate"].cumsum()
 df_al.to_csv(r"_data/alachua_raw.csv") # Clean in excel and select variable
 
-df_br = df_day[df_day["County"].str.contains("Broward")]
-
-df_fl.to_csv(r"_data/broward_raw.csv") # Clean in excel and select variable
-
 df_fl = df_day[df_day["County"].str.contains("Florida")]
-
+df_fl["Total"] = df_fl["Rate"].cumsum()
 df_fl.to_csv(r"_data/florida_raw.csv") # Clean in excel and select variable
 
 ## Step 4: Create Visuals and Outputs
