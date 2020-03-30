@@ -13,13 +13,10 @@ os.chdir("C:/Users/drewc/GitHub/covid-florida/_mar241012") # Set wd to project r
 
 #################### Break ####################
 
-# Section A: Day and Week Temporal Analysis
+# Section A: Create Table of Confirmed Cases by County and Day Count
 print("Section A: Start") # Print result
 
 ## Step 1: Import Libraries and Data
-
-### Import Libraries Specific for this Analysis
-import matplotlib.pyplot as plt
 
 ### Import Data
 df_case = pd.read_csv("_data/cases_stage.csv", encoding = "ISO-8859-1") # Import dataset saved as csv in _data folder
@@ -34,140 +31,347 @@ df_case.head() # Print first 5 observations
 df_filter = df_case.filter(["Case", "County", "DateCounted"]) # Keep only selected columns
 df_group = df_filter.groupby(["County", "DateCounted"], as_index = False).count() # Group data By Columns and Sum
 df_rename = df_group.rename(columns = {"DateCounted": "Date", "Case": "Cases"}) # Rename column
-df_add = pd.DataFrame([["Alachua", "2020-03-06 00:00:00", 0]], columns = ["County", "Date", "Cases"])
+df_add = pd.DataFrame([["Alachua", "2020-03-06 00:00:00", 0]], columns = ["County", "Date", "Cases"]) # Add mArch 6 date where no cases were reported statewide
 df_stack = pd.concat([df_add, df_rename]) # Combine rows with same columns
-
-df_stack["Date"] = df_stack["Date"].astype("datetime64") # Change data type of column in data frame
+df_stack["Date"] = df_stack["Date"].astype("datetime64") # Change date type of column in data frame
 df_sort = df_stack.sort_values(by = ["Date"], ascending = True) # Sort Columns by Value
+
+### Create Wide Dataset for All Dates and Counties
 df_wide = df_sort.pivot_table(index = "County", columns = "Date", values = "Cases") # Pivot from Long to Wide Format
-
-### Create Wide Dataset for All Days and Counties
-df_flco = pd.read_csv("_data/fl_counties.csv", encoding = "ISO-8859-1") # Import dataset saved as csv in _data folder
-df_join = pd.merge(df_wide, df_flco, on = "County", how = "outer") # Join by column while keeping only items that exist in both, select outer or left for other options
+df_flco = pd.read_csv("_data/fl_counties.csv", encoding = "ISO-8859-1") # Import dataset with county names saved as csv in _data folder
+df_join = pd.merge(df_wide, df_flco, on = "County", how = "outer") # Join by column and add counties without confirmed cases
 df_join.loc[:, df_join.columns != "County"] = df_join.loc[:, df_join.columns != "County"].fillna(0).astype(np.float64) # Remove NA and change to int64 zeros
-df_join.loc["Total"] = df_join.sum()
-df_join.loc["Total", "County"] = "Florida"
-df_index = df_join.reset_index(drop = True)
+df_join.loc["Total"] = df_join.sum() # Add row for column sum anmed "Total"
+df_join.loc["Total", "County"] = "Florida" # Rename total Row as Florida
+df_index = df_join.reset_index(drop = True) # Reset index as County variable
 
-###
-cols_to_order = ["County"]
-new_columns = cols_to_order + (df_index.columns.drop(cols_to_order).tolist())
-df_order = df_index[new_columns]
+### Create data frame with dates in order 
+cols_to_order = ["County"] # Create object of non date formatted columns
+new_columns = cols_to_order + (df_index.columns.drop(cols_to_order).tolist()) # Create object of columns ordered by date following non date columns
+df_order = df_index[new_columns] # Create new data frame with columns in order by date
 
-###
-l_days = ["County"]
-for x in range(len(df_order.columns) - 1): l_days.append("Day" + str(x))
-df_order.columns = l_days
-df_daily = df_order
-df_daily.to_csv(r"_data/daily_raw.csv") # Clean in excel and select variable
+### Rename dates as day count from first confirmed case
+l_days = ["County"] # Save "County" as a list with one value
+for x in range(len(df_order.columns) - 1): l_days.append("Day" + str(x)) 
+
+#### Hit Enter in Terminal Manually ####
+
+df_order.columns = l_days # Add list of County and Days as Column names for ordered data frame
+df_daily = df_order.set_index("County") # Reset index as County variable and rename to daily
+
+### Verify
+df_daily.to_csv(r"_data/daily_raw.csv") # Export to csv for an easy to read table
+
+# End Section
+print("THE END") # Print result
+
+#################### Break ####################
+
+# Section B: Create Table of Confirmed Cases by County and Week Count
+print("Section B: Start") # Print result
+
+## Step 1: Import Libraries and Data
+
+### Import Libraries
+import math as mt # Basic math library 
+import matplotlib.pyplot as plt # Standard graphing library
+
+### Import Data
+df_daily = pd.read_csv("_data/daily_raw.csv", encoding = "ISO-8859-1") # Import dataset saved as csv in _data folder
+
+### Verify CMS
+df_daily.info() # Get class, memory, and column info: names, data types, obs.
+df_daily.head() # Print first 5 observations
+
+## Step 2: Prepare Data for Analysis
 
 ### Connect Wide Format with Week and Day Count
-df_long = pd.melt(df_daily, id_vars = ["County"])
-df_rename = df_long.rename(columns = {"variable": "Day", "value": "Cases"}) # Rename column
-df_rename["Day"] = df_rename["Day"].str.strip("Day")
-df_rename["Day"] = df_rename["Day"].astype("int64")
-df_dywk = pd.read_csv("_data/weeks_days.csv", encoding = "ISO-8859-1") # Import dataset saved as csv in _data folder
-df_join = pd.merge(df_rename, df_dywk, on = "Day", how = "left") # Join by column while keeping only items that exist in both, select outer or left for other options
-df_flpop = pd.read_csv("_data/fl_population.csv", encoding = "ISO-8859-1") # Import dataset saved as csv in _data folder
-df_join2 = pd.merge(df_join, df_flpop, on = "County", how = "left") # Join by column while keeping only items that exist in both, select outer or left for other options
-df_join2["Rate"] = df_join2["Cases"]/df_join2["Population"]*100000
+df_long = pd.melt(df_daily, id_vars = ["County"]) # Convert daily table from Long to Wide with columns for County and Day
+df_rename = df_long.rename(columns = {"variable": "Day", "value": "Cases"}) # Rename columns
+df_rename["Day"] = df_rename["Day"].str.strip("Day") # Remove Day String value
+df_rename["Day"] = df_rename["Day"].astype("int64") # Convert Day value to integer
+df_rename["Cases"] = df_rename["Cases"].astype("int64") # Convert Day value to integer
 
-## Retrospective by Week and County
-df_filter = df_join2.filter(["Cases", "Rate", "County", "Week"]) # Keep only selected columns
-df_group = df_filter.groupby(["County", "Week"], as_index = False).sum() # Group data By Columns and Sum
-df_sort = df_group.sort_values(by = ["County", "Week"], ascending = True) # Sort Columns by Value
-df_sort["Change"] = df_sort["Cases"] - df_sort["Cases"].shift(1)
-df_sort["Double"] = np.where(df_sort["Cases"] >= df_sort["Cases"].shift(1), "Yes", "No")
-df_sort["Double"][df_sort["Week"] == 1] = "No"
-df_sort["Double"][df_sort["Cases"] == 0] = "No"
-df_sort["Change"][df_sort["Week"] == 1] = 0
-df_sort["Increase"] = df_sort["Cases"] / df_sort["Change"] * 100
-df_week = df_sort
-df_week.to_csv(r"_data/weekly_raw.csv") # Clean in excel and select variable
+### Assign Week Label with Day0 - Day 6 representing Week 1
+df_dywk = pd.read_csv("_data/weeks_days.csv", encoding = "ISO-8859-1") # Import dataset of day and week labeles saved as csv in _data folder
+df_dywkcs = pd.merge(df_rename, df_dywk, on = "Day", how = "left") # Join by column amd assign week label to each day and county observation
 
-## Retrospective by Day and County
-df_sort = df_join2.sort_values(by = ["County", "Day"], ascending = True) # Sort Columns by Value
-df_sort["Change"] = df_sort["Cases"] - df_sort["Cases"].shift(1)
-df_sort["Double"] = np.where(df_sort["Cases"] >= df_sort["Cases"].shift(1), "Yes", "No")
-df_sort["Double"][df_sort["Day"] == 0] = "No"
-df_sort["Double"][df_sort["Cases"] == 0] = "No"
-df_sort["Change"][df_sort["Day"] == 0] = 0
-df_day = df_sort
-df_day.to_csv(r"_data/day_raw.csv") # Clean in excel and select variable
+### Calculate Population Adjusted Incidence Rate (per 100k)
+df_flpop = pd.read_csv("_data/fl_population.csv", encoding = "ISO-8859-1") # Import dataset saved as csv in _data folder of 2018 popualtion estimate by County from FlCHarts
+df_join = pd.merge(df_dywkcs, df_flpop, on = "County", how = "left") # Join by column assign population count
+df_sort = df_join.sort_values(by = ["County", "Day"], ascending = True) # Sort Columns by Value
+df_sort["Rate"] = df_sort["Cases"]/df_sort["Population"]*100000 # Calculate incidence rate dividing daily new cases by population count and multiplying by 100,000
 
-## Create Florida Specific Data
+### Calculate Logarithm of Counts
+df_sort["Log"] = np.log(df_sort["Cases"]).replace(-np.inf, np.nan).replace(np.nan, 0)
+df_sort["Log"][df_sort["Day"] == 0] = 0 # Set Change to NO for every row for day 1
+
+### Calculate Log of Counts
+df_sort["Log"] = np.log(df_sort["Cases"]).replace(-np.inf, np.nan).replace(np.nan, 0)
+df_sort["Log"][df_sort["Day"] == 0] = 0 # Set Change to NO for every row for day 1
+
+### Verify
+df_day = df_sort # Rename
+df_day.to_csv(r"_data/day_change_raw.csv") # Clean in excel and select variable
+
+### Create Top 10 County Specific Data
 df_fl = df_day[df_day["County"].str.contains("Florida")]
-df_fl["Total"] = df_fl["Rate"].cumsum()
-df_fl.to_csv(r"_data/florida_raw.csv") # Clean in excel and select variable
-
-## Create Alachua Specific Data
 df_al = df_day[df_day["County"].str.contains("Alachua")]
-df_al["Total"] = df_al["Rate"].cumsum()
-df_al.to_csv(r"_data/alachua_raw.csv") # Clean in excel and select variable
-
-## Create County Specific Data
 df_br = df_day[df_day["County"].str.contains("Broward")]
-df_br["Total"] = df_br["Rate"].cumsum()
 df_da = df_day[df_day["County"].str.contains("Dade")]
-df_da["Total"] = df_da["Rate"].cumsum()
 df_pb = df_day[df_day["County"].str.contains("Palm Beach")]
-df_pb["Total"] = df_pb["Rate"].cumsum()
 df_hb = df_day[df_day["County"].str.contains("Hillsborough")]
-df_hb["Total"] = df_hb["Rate"].cumsum()
 df_or = df_day[df_day["County"].str.contains("Orange")]
-df_or["Total"] = df_or["Rate"].cumsum()
 df_pn = df_day[df_day["County"].str.contains("Pinellas")]
-df_pn["Total"] = df_pn["Rate"].cumsum()
 df_dv = df_day[df_day["County"].str.contains("Duval")]
-df_dv["Total"] = df_dv["Rate"].cumsum()
 df_ln = df_day[df_day["County"].str.contains("Leon")]
-df_ln["Total"] = df_ln["Rate"].cumsum()
+
+### Create Cumulative Totals for Counts
+df_fl["TotalCount"] = df_fl["Cases"].cumsum()
+df_al["TotalCount"] = df_al["Cases"].cumsum()
+df_br["TotalCount"] = df_br["Cases"].cumsum()
+df_da["TotalCount"] = df_da["Cases"].cumsum()
+df_pb["TotalCount"] = df_pb["Cases"].cumsum()
+df_hb["TotalCount"] = df_hb["Cases"].cumsum()
+df_or["TotalCount"] = df_or["Cases"].cumsum()
+df_pn["TotalCount"] = df_pn["Cases"].cumsum()
+df_dv["TotalCount"] = df_dv["Cases"].cumsum()
+df_ln["TotalCount"] = df_ln["Cases"].cumsum()
+
+### Create Cumulative Totals for Rates
+df_fl["TotalRate"] = df_fl["Rate"].cumsum()
+df_al["TotalRate"] = df_al["Rate"].cumsum()
+df_br["TotalRate"] = df_br["Rate"].cumsum()
+df_da["TotalRate"] = df_da["Rate"].cumsum()
+df_pb["TotalRate"] = df_pb["Rate"].cumsum()
+df_hb["TotalRate"] = df_hb["Rate"].cumsum()
+df_or["TotalRate"] = df_or["Rate"].cumsum()
+df_pn["TotalRate"] = df_pn["Rate"].cumsum()
+df_dv["TotalRate"] = df_dv["Rate"].cumsum()
+df_ln["TotalRate"] = df_ln["Rate"].cumsum()
+
+### Create Cumulative Totals for Rates
+df_fl["TotalLog"] = df_fl["Log"].cumsum()
+df_al["TotalLog"] = df_al["Log"].cumsum()
+df_br["TotalLog"] = df_br["Log"].cumsum()
+df_da["TotalLog"] = df_da["Log"].cumsum()
+df_pb["TotalLog"] = df_pb["Log"].cumsum()
+df_hb["TotalLog"] = df_hb["Log"].cumsum()
+df_or["TotalLog"] = df_or["Log"].cumsum()
+df_pn["TotalLog"] = df_pn["Log"].cumsum()
+df_dv["TotalLog"] = df_dv["Log"].cumsum()
+df_ln["TotalLog"] = df_ln["Log"].cumsum()
+
+### Create Doubling Time for Counts
+df_fl["Double"] = mt.log(2) / df_fl["Cases"].pct_change()
+df_al["Double"] = mt.log(2) / df_al["Cases"].pct_change()
+df_br["Double"] = mt.log(2) / df_br["Cases"].pct_change()
+df_da["Double"] = mt.log(2) / df_da["Cases"].pct_change()
+df_pb["Double"] = mt.log(2) / df_pb["Cases"].pct_change()
+df_hb["Double"] = mt.log(2) / df_hb["Cases"].pct_change()
+df_or["Double"] = mt.log(2) / df_or["Cases"].pct_change()
+df_pn["Double"] = mt.log(2) / df_pn["Cases"].pct_change()
+df_dv["Double"] = mt.log(2) / df_dv["Cases"].pct_change()
+df_ln["Double"] = mt.log(2) / df_ln["Cases"].pct_change()
+
+### Verify
+df_fl.to_csv(r"_data/florida_raw.csv") # Clean in excel and select variable
+df_al.to_csv(r"_data/alachua_raw.csv") # Clean in excel and select variable
 
 ## Step 4: Create Visuals and Outputs
 
-### Create Barplot for Alachua County
+## Alachua County
+
+### Create Barplot for New Cases by Count
 plt.figure()
 x = np.arange(len(df_al.Day))
 plt.bar((x), df_al.Cases, color = 'g', width = 0.4)
 plt.xticks((x), df_al["Day"], rotation = 90)
-plt.ylabel("Newly Confirmed Cases Each Day")
+plt.ylabel("Newly Confirmed Case Count")
 plt.xlabel("Day Number (Day 0 is March 2, 2020)")
 plt.legend(["Alachua"])
-plt.title("Florida DOH Alachua Confirmed COVID-19 Cases (As of March 22, 2020 6:21PM)")
-plt.savefig("_fig/alachua_daily.jpeg", bbox_inches = "tight")
+plt.title("Florida DOH Alachua Confirmed COVID-19 Cases (As of March 22, 2020 10:18AM)")
+plt.savefig("_fig/alachua_daily_count.jpeg", bbox_inches = "tight")
 
-### Create Barplot for Florida
+### Create Barplot for New Cases by Rate
+plt.figure()
+x = np.arange(len(df_al.Day))
+plt.bar((x), df_al.Rate, color = 'g', width = 0.4)
+plt.xticks((x), df_al["Day"], rotation = 90)
+plt.ylabel("Newly Confirmed Case Incidence Rate (per 100k)")
+plt.xlabel("Day Number (Day 0 is March 2, 2020)")
+plt.legend(["Alachua"])
+plt.title("Florida DOH Alachua County Confirmed COVID-19 Cases (As of March 22, 2020 10:18AM)")
+plt.savefig("_fig/alachua_daily_rate.jpeg", bbox_inches = "tight")
+
+### Create Barplot for New Cases by Log
+plt.figure()
+x = np.arange(len(df_al.Day))
+plt.bar((x), df_al.Log, color = 'g', width = 0.4)
+plt.xticks((x), df_al["Day"], rotation = 90)
+plt.ylabel("Newly Confirmed Case (Log)")
+plt.xlabel("Day Number (Day 0 is March 2, 2020)")
+plt.legend(["Alachua"])
+plt.title("Florida DOH Alachua County Confirmed COVID-19 Cases (As of March 22, 2020 10:18AM)")
+plt.savefig("_fig/alachua_daily_log.jpeg", bbox_inches = "tight")
+
+### Create Barplot for New Cases by Log
+plt.figure()
+x = np.arange(len(df_al.Day))
+plt.bar((x), df_al.Log, color = 'g', width = 0.4)
+plt.xticks((x), df_al["Day"], rotation = 90)
+plt.ylabel("Newly Confirmed Case Doubling Time")
+plt.xlabel("Day Number (Day 0 is March 2, 2020)")
+plt.legend(["Alachua"])
+plt.title("Florida DOH Alachua County Confirmed COVID-19 Cases (As of March 22, 2020 10:18AM)")
+plt.savefig("_fig/alachua_daily_double.jpeg", bbox_inches = "tight")
+
+## Florida 
+
+### Create Barplot for New Cases by Count
 plt.figure()
 x = np.arange(len(df_fl.Day))
 plt.bar((x), df_fl.Cases, color = 'b', width = 0.4)
 plt.xticks((x), df_fl["Day"], rotation = 90)
-plt.ylabel("Newly Confirmed Cases Each Day")
+plt.ylabel("Newly Confirmed Case Count")
 plt.xlabel("Day Number (Day 0 is March 2, 2020)")
 plt.legend(["Florida"])
-plt.title("Florida DOH Statewide Confirmed COVID-19 Cases (As of March 22, 2020 6:21PM)")
-plt.savefig("_fig/florida_daily.jpeg", bbox_inches = "tight")
+plt.title("Florida DOH Statewide Confirmed COVID-19 Cases (As of March 24, 2020 10:18AM)")
+plt.savefig("_fig/florida_daily_count.jpeg", bbox_inches = "tight")
 
-### Create Multiple Line Plot for Percent Change
+### Create Barplot for New Cases by Rate
+plt.figure()
+x = np.arange(len(df_fl.Day))
+plt.bar((x), df_fl.Rate, color = 'b', width = 0.4)
+plt.xticks((x), df_fl["Day"], rotation = 90)
+plt.ylabel("Newly Confirmed Case Incidence Rate (per 100k)")
+plt.xlabel("Day Number (Day 0 is March 2, 2020)")
+plt.legend(["Florida"])
+plt.title("Florida DOH Statewide Confirmed COVID-19 Cases (As of March 24, 2020 10:18AM)")
+plt.savefig("_fig/florida_daily_rate.jpeg", bbox_inches = "tight")
+
+### Create Barplot for New Cases by Log
+plt.figure()
+x = np.arange(len(df_fl.Day))
+plt.bar((x), df_fl.Log, color = 'g', width = 0.4)
+plt.xticks((x), df_fl["Day"], rotation = 90)
+plt.ylabel("Newly Confirmed Case (Log)")
+plt.xlabel("Day Number (Day 0 is March 2, 2020)")
+plt.legend(["Alachua"])
+plt.title("Florida DOH Alachua County Confirmed COVID-19 Cases (As of March 22, 2020 10:18AM)")
+plt.savefig("_fig/alachua_daily_log.jpeg", bbox_inches = "tight")
+
+### Create Barplot for Doubling Time
+plt.figure()
+x = np.arange(len(df_fl.Day))
+plt.bar((x), df_fl.Log, color = 'g', width = 0.4)
+plt.xticks((x), df_fl["Day"], rotation = 90)
+plt.ylabel("Newly Confirmed Case Doubling Time")
+plt.xlabel("Day Number (Day 0 is March 2, 2020)")
+plt.legend(["Alachua"])
+plt.title("Florida DOH Alachua County Confirmed COVID-19 Cases (As of March 22, 2020 10:18AM)")
+plt.savefig("_fig/alachua_daily_double.jpeg", bbox_inches = "tight")
+
+## Top Counties
+
+### Create Multiple Line Plot Total by Count
 plt.figure()
 x = np.arange(len(df_al.Day))
-plt.plot(df_al.Day, df_al.Total, color = "g")
-plt.plot(df_br.Day, df_br.Total, color = "b")
-plt.plot(df_da.Day, df_da.Total, color = "r")
-plt.plot(df_pb.Day, df_pb.Total, color = "c")
-plt.plot(df_hb.Day, df_hb.Total, color = "m")
-plt.plot(df_or.Day, df_or.Total, color = "y")
-plt.plot(df_pn.Day, df_pn.Total, color = "k")
-plt.plot(df_dv.Day, df_dv.Total, color = "0.75")
-plt.plot(df_ln.Day, df_ln.Total, color = "0.25")
-plt.ylabel("Total Confirmed Cases per 100,000")
+plt.plot(df_al.Day, df_al.TotalCount, color = "g")
+plt.plot(df_br.Day, df_br.TotalCount, color = "b")
+plt.plot(df_da.Day, df_da.TotalCount, color = "r")
+plt.plot(df_dv.Day, df_dv.TotalCount, color = "0.75")
+plt.plot(df_hb.Day, df_hb.TotalCount, color = "m")
+plt.plot(df_ln.Day, df_ln.TotalCount, color = "0.25")
+plt.plot(df_or.Day, df_or.TotalCount, color = "y")
+plt.plot(df_pb.Day, df_pb.TotalCount, color = "c")
+plt.plot(df_pn.Day, df_pn.TotalCount, color = "k")
+plt.ylabel("Total Confirmed Case Count")
 plt.xlabel("Day Number (Day 0 is March 2, 2020)")
 plt.xticks((x), df_al["Day"], rotation = 90)
-plt.legend(["Alachua", "Broward", "Dade", "Palm Beach", "Hillsborough", "Orange", "Pinellas", "Duval", "Leon"])
-plt.title("Florida DOH Confirmed COVID-19 Cases by County (As of March 22, 2020 6:21PM)")
-plt.savefig("_fig/total_daily.jpeg", bbox_inches = "tight")
+plt.legend(["Alachua", "Broward", "Dade", "Duval", "Hillsborough", "Leon", "Orange", "Palm Beach", "Pinellas"])
+plt.title("Florida DOH Confirmed COVID-19 Cases by County (As of March 24, 2020 10:18AM)")
+plt.savefig("_fig/county_total_count.jpeg", bbox_inches = "tight")
+
+### Create Multiple Line Plot for Total by Rate
+plt.figure()
+x = np.arange(len(df_al.Day))
+plt.plot(df_al.Day, df_al.TotalRate, color = "g")
+plt.plot(df_br.Day, df_br.TotalRate, color = "b")
+plt.plot(df_da.Day, df_da.TotalRate, color = "r")
+plt.plot(df_dv.Day, df_dv.TotalRate, color = "0.75")
+plt.plot(df_hb.Day, df_hb.TotalRate, color = "m")
+plt.plot(df_ln.Day, df_ln.TotalRate, color = "0.25")
+plt.plot(df_or.Day, df_or.TotalRate, color = "y")
+plt.plot(df_pb.Day, df_pb.TotalRate, color = "c")
+plt.plot(df_pn.Day, df_pn.TotalRate, color = "k")
+plt.ylabel("Total Confirmed Case Incidence Rate (per 100k)")
+plt.xlabel("Day Number (Day 0 is March 2, 2020)")
+plt.xticks((x), df_al["Day"], rotation = 90)
+plt.legend(["Alachua", "Broward", "Dade", "Duval", "Hillsborough", "Leon", "Orange", "Palm Beach", "Pinellas"])
+plt.title("Florida DOH Confirmed COVID-19 Cases by County (As of March 24, 2020 10:18AM)")
+plt.savefig("_fig/county_total_rate.jpeg", bbox_inches = "tight")
+
+### Create Multiple Line Plot for Total by Log
+plt.figure()
+x = np.arange(len(df_al.Day))
+plt.plot(df_al.Day, df_al.Log, color = "g")
+plt.plot(df_br.Day, df_br.TotalLog, color = "b")
+plt.plot(df_da.Day, df_da.TotalLog, color = "r")
+plt.plot(df_dv.Day, df_dv.TotalLog, color = "0.75")
+plt.plot(df_hb.Day, df_hb.TotalLog, color = "m")
+plt.plot(df_ln.Day, df_ln.TotalLog, color = "0.25")
+plt.plot(df_or.Day, df_or.TotalLog, color = "y")
+plt.plot(df_pb.Day, df_pb.TotalLog, color = "c")
+plt.plot(df_pn.Day, df_pn.TotalLog, color = "k")
+plt.ylabel("Total Confirmed Case Count (Log)")
+plt.xlabel("Day Number (Day 0 is March 2, 2020)")
+plt.xticks((x), df_al["Day"], rotation = 90)
+plt.legend(["Alachua", "Broward", "Dade", "Duval", "Hillsborough", "Leon", "Orange", "Palm Beach", "Pinellas"])
+plt.title("Florida DOH Confirmed COVID-19 Cases by County (As of March 24, 2020 10:18AM)")
+plt.savefig("_fig/county_total_log.jpeg", bbox_inches = "tight")
+
+### Create Multiple Line Plot for Daily Double Count
+plt.figure()
+x = np.arange(len(df_fl.Day))
+plt.plot(df_fl.Day, df_fl.Double.clip(lower=0).replace(np.inf, 500).replace(np.nan, 500), color = "g")
+plt.ylabel("Doubling Time Based on New Cases")
+plt.xlabel("Day Number (Day 0 is March 2, 2020)")
+plt.xticks((x), df_fl["Day"], rotation = 90)
+plt.title("Florida DOH Confirmed COVID-19 Cases (As of March 24, 2020 10:18AM)")
+plt.savefig("_fig/florida_change_double.jpeg", bbox_inches = "tight")
 
 ## Verify
 plt.show() # Show created plots
+
+# End Section
+print("THE END") # Print result
+
+#################### Break ####################
+
+# Section D: Create Population Adjusted Rates and Totals by Week
+print("Section D: Start") # Print result
+
+## Step 1: Import Libraries and Data
+
+### Verify Day Week Cases
+df_dywkcs.info() # Get class, memory, and column info: names, data types, obs.
+df_dywkcs.head() # Print first 5 observations
+
+## Step 2: Prepare Data for Analysis
+
+## Retrospective Totals by Week and County
+df_filter = df_join.filter(["Cases", "Rate", "County", "Week"]) # Keep only selected columns
+df_group = df_filter.groupby(["County", "Week"], as_index = False).sum() # Group data By Columns and Sum
+df_sort = df_group.sort_values(by = ["County", "Week"], ascending = True) # Sort Columns by Value
+df_sort["Change"] = df_sort["Cases"] - df_sort["Cases"].shift(1) # Calculate change from previous day by subtracting from row above
+df_sort["Double"] = np.where(df_sort["Cases"] >= df_sort["Cases"].shift(1), "Yes", "No") # Add column saying whether day count doubled
+df_sort["Double"][df_sort["Week"] == 1] = "No" # Set Double to NO for every row for week 1
+df_sort["Double"][df_sort["Cases"] == 0] = "No" # Set Double to NO for every day that has a zero count
+df_sort["Change"][df_sort["Week"] == 1] = 0 # Set Change to NO for every day that has a zero count
+df_sort["Increase"] = df_sort["Cases"] / df_sort["Change"] * 100 # Calculate percent increase from previous day
+df_week = df_sort # Rename
+df_week.to_csv(r"_data/week_rates_raw.csv") # Clean in excel and select variable
 
 # End Section
 print("THE END") # Print result
