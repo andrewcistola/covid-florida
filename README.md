@@ -14,8 +14,8 @@ Each folder in the repository contains updated data through the date and time li
 ## Other Repositories
 Non-florida data is collected from the following repositories:
 
-#### Johns Hopkins University Center for Systems Science and Engineering: [a link](https://github.com/CSSEGISandData/COVID-19)
-#### New York City Department of Health and Mental Hygiene: [a link](https://github.com/nychealth/coronavirus-data)
+#### [Johns Hopkins University Center for Systems Science and Engineering: https://github.com/CSSEGISandData/COVID-19](https://github.com/CSSEGISandData/COVID-19)
+#### [New York City Department of Health and Mental Hygiene: https://github.com/nychealth/coronavirus-data](https://github.com/nychealth/coronavirus-data)
 
 ## Disclaimer
 While the author (Andrew Cistola) is a Florida DOH employee and a University of Florida PhD student, these are NOT official publications by the Florida DOH, the University of Florida, or any other agency. 
