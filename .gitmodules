@@ -1,0 +1,6 @@
+[submodule "CSSEGISandData_COVID-19/COVID-19"]
+	path = CSSEGISandData_COVID-19/COVID-19
+	url = https://github.com/CSSEGISandData/COVID-19.git
+[submodule "nychealth_coronavirus-data/coronavirus-data"]
+	path = nychealth_coronavirus-data/coronavirus-data
+	url = https://github.com/nychealth/coronavirus-data.git
