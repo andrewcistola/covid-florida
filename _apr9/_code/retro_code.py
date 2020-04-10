@@ -104,38 +104,14 @@ df_day = df_sort # Rename
 ### Create Top 10 County Specific Data
 df_fl = df_day[df_day["County"].str.contains("Florida")]
 df_al = df_day[df_day["County"].str.contains("Alachua")]
-df_br = df_day[df_day["County"].str.contains("Broward")]
-df_da = df_day[df_day["County"].str.contains("Dade")]
-df_pb = df_day[df_day["County"].str.contains("Palm Beach")]
-df_hb = df_day[df_day["County"].str.contains("Hillsborough")]
-df_or = df_day[df_day["County"].str.contains("Orange")]
-df_pn = df_day[df_day["County"].str.contains("Pinellas")]
-df_dv = df_day[df_day["County"].str.contains("Duval")]
-df_ln = df_day[df_day["County"].str.contains("Leon")]
 
 ### Create Cumulative Totals for Counts
 df_fl["TotalCount"] = df_fl["Cases"].cumsum()
 df_al["TotalCount"] = df_al["Cases"].cumsum()
-df_br["TotalCount"] = df_br["Cases"].cumsum()
-df_da["TotalCount"] = df_da["Cases"].cumsum()
-df_pb["TotalCount"] = df_pb["Cases"].cumsum()
-df_hb["TotalCount"] = df_hb["Cases"].cumsum()
-df_or["TotalCount"] = df_or["Cases"].cumsum()
-df_pn["TotalCount"] = df_pn["Cases"].cumsum()
-df_dv["TotalCount"] = df_dv["Cases"].cumsum()
-df_ln["TotalCount"] = df_ln["Cases"].cumsum()
 
 ### Create Cumulative Totals for Rates
 df_fl["TotalRate"] = df_fl["Rate"].cumsum()
 df_al["TotalRate"] = df_al["Rate"].cumsum()
-df_br["TotalRate"] = df_br["Rate"].cumsum()
-df_da["TotalRate"] = df_da["Rate"].cumsum()
-df_pb["TotalRate"] = df_pb["Rate"].cumsum()
-df_hb["TotalRate"] = df_hb["Rate"].cumsum()
-df_or["TotalRate"] = df_or["Rate"].cumsum()
-df_pn["TotalRate"] = df_pn["Rate"].cumsum()
-df_dv["TotalRate"] = df_dv["Rate"].cumsum()
-df_ln["TotalRate"] = df_ln["Rate"].cumsum()
 
 ### Verify
 df_fl.to_csv(r"_data/florida_raw.csv") # Clean in excel and select variable
@@ -191,41 +167,149 @@ plt.legend(["Florida"])
 plt.title("Florida DOH Confirmed COVID-19 Cases by Day")
 plt.savefig("_fig/florida_daily_rate.jpeg", bbox_inches = "tight")
 
+## Verify
+plt.show() # Show created plots
+
+# End Section
+print("THE END") # Print result
+
+#################### Break ####################
+
+# Section C: Create Table of Confirmed Cases by Top FL Counties
+print("Section C: Start") # Print result
+
+## Step 1: Import Libraries and Data
+
+### Verify FL and Alachua 
+df_fl.info() # Get class, memory, and column info: names, data types, obs.
+df_fl.head() # Print first 5 observations
+df_al.info() # Get class, memory, and column info: names, data types, obs.
+df_al.head() # Print first 5 observations
+
+### Create Top County Specific Data
+df_br = df_day[df_day["County"].str.contains("Broward")]
+df_da = df_day[df_day["County"].str.contains("Dade")]
+df_pb = df_day[df_day["County"].str.contains("Palm Beach")]
+df_hb = df_day[df_day["County"].str.contains("Hillsborough")]
+df_or = df_day[df_day["County"].str.contains("Orange")]
+df_pn = df_day[df_day["County"].str.contains("Pinellas")]
+df_dv = df_day[df_day["County"].str.contains("Duval")]
+
+### Create Cumulative Totals for Counts
+df_br["TotalCount"] = df_br["Cases"].cumsum()
+df_da["TotalCount"] = df_da["Cases"].cumsum()
+df_pb["TotalCount"] = df_pb["Cases"].cumsum()
+df_hb["TotalCount"] = df_hb["Cases"].cumsum()
+df_or["TotalCount"] = df_or["Cases"].cumsum()
+df_pn["TotalCount"] = df_pn["Cases"].cumsum()
+df_dv["TotalCount"] = df_dv["Cases"].cumsum()
+
+### Create Cumulative Totals for Rates
+df_br["TotalRate"] = df_br["Rate"].cumsum()
+df_da["TotalRate"] = df_da["Rate"].cumsum()
+df_pb["TotalRate"] = df_pb["Rate"].cumsum()
+df_hb["TotalRate"] = df_hb["Rate"].cumsum()
+df_or["TotalRate"] = df_or["Rate"].cumsum()
+df_pn["TotalRate"] = df_pn["Rate"].cumsum()
+df_dv["TotalRate"] = df_dv["Rate"].cumsum()
+
+### Create County 25 Day Data
+df_al25 = df_al[df_al.TotalCount > 25] # Subset data frame by Total COunt of more than 100
+df_al25.insert(0, "Day25", range(0, len(df_al25))) # Create column of ascending values the length of the dataframe
+df_br25 = df_br[df_br.TotalCount > 25] # Subset data frame by Total COunt of more than 100
+df_br25.insert(0, "Day25", range(0, len(df_br25))) # Create column of ascending values the length of the dataframe
+df_da25 = df_da[df_da.TotalCount > 25] # Subset data frame by Total COunt of more than 100
+df_da25.insert(0, "Day25", range(0, len(df_da25))) # Create column of ascending values the length of the dataframe
+df_pb25 = df_pb[df_pb.TotalCount > 25] # Subset data frame by Total COunt of more than 100
+df_pb25.insert(0, "Day25", range(0, len(df_pb25))) # Create column of ascending values the length of the dataframe
+df_hb25 = df_hb[df_hb.TotalCount > 25] # Subset data frame by Total COunt of more than 100
+df_hb25.insert(0, "Day25", range(0, len(df_hb25))) # Create column of ascending values the length of the dataframe
+df_or25 = df_or[df_or.TotalCount > 25] # Subset data frame by Total COunt of more than 100
+df_or25.insert(0, "Day25", range(0, len(df_or25))) # Create column of ascending values the length of the dataframe
+df_pn25 = df_pn[df_pn.TotalCount > 25] # Subset data frame by Total COunt of more than 100
+df_pn25.insert(0, "Day25", range(0, len(df_pn25))) # Create column of ascending values the length of the dataframe
+df_dv25 = df_dv[df_dv.TotalCount > 25] # Subset data frame by Total COunt of more than 100
+df_dv25.insert(0, "Day25", range(0, len(df_dv25))) # Create column of ascending values the length of the dataframe
+
+### Create 25 Case Start Date
+df_al25["OneDay"] = 25*2.7183818**(0.6931471/1*df_al25["Day25"])
+df_al25["TwoDay"] = 25*2.7183818**(0.6931471/2*df_al25["Day25"])
+df_al25["ThreeDay"] = 25*2.7183818**(0.6931471/3*df_al25["Day25"])
+df_al25["SevenDay"] = 25*2.7183818**(0.6931471/7*df_al25["Day25"])
+df_al25["ThirtyDay"] = 25*2.7183818**(0.6931471/30*df_al25["Day25"])
+
+### Create 1 per 100k Data
+df_al1k = df_al[df_al.TotalCount > 1] # Subset data frame by Total COunt of more than 100
+df_al1k.insert(0, "Day1k", range(0, len(df_al1k))) # Create column of ascending values the length of the dataframe
+df_br1k = df_br[df_br.TotalCount > 1] # Subset data frame by Total COunt of more than 100
+df_br1k.insert(0, "Day1k", range(0, len(df_br1k))) # Create column of ascending values the length of the dataframe
+df_da1k = df_da[df_da.TotalCount > 1] # Subset data frame by Total COunt of more than 100
+df_da1k.insert(0, "Day1k", range(0, len(df_da1k))) # Create column of ascending values the length of the dataframe
+df_pb1k = df_pb[df_pb.TotalCount > 1] # Subset data frame by Total COunt of more than 100
+df_pb1k.insert(0, "Day1k", range(0, len(df_pb1k))) # Create column of ascending values the length of the dataframe
+df_hb1k = df_hb[df_hb.TotalCount > 1] # Subset data frame by Total COunt of more than 100
+df_hb1k.insert(0, "Day1k", range(0, len(df_hb1k))) # Create column of ascending values the length of the dataframe
+df_or1k = df_or[df_or.TotalCount > 1] # Subset data frame by Total COunt of more than 100
+df_or1k.insert(0, "Day1k", range(0, len(df_or1k))) # Create column of ascending values the length of the dataframe
+df_pn1k = df_pn[df_pn.TotalCount > 1] # Subset data frame by Total COunt of more than 100
+df_pn1k.insert(0, "Day1k", range(0, len(df_pn1k))) # Create column of ascending values the length of the dataframe
+df_dv1k = df_dv[df_dv.TotalCount > 1] # Subset data frame by Total COunt of more than 100
+df_dv1k.insert(0, "Day1k", range(0, len(df_dv1k))) # Create column of ascending values the length of the dataframe
+
+### Create 25 Case Start Date
+df_al1k["OneDay"] = 1*2.7183818**(0.6931471/1*df_al1k["Day1k"])
+df_al1k["TwoDay"] = 1*2.7183818**(0.6931471/2*df_al1k["Day1k"])
+df_al1k["ThreeDay"] = 1*2.7183818**(0.6931471/3*df_al1k["Day1k"])
+df_al1k["SevenDay"] = 1*2.7183818**(0.6931471/7*df_al1k["Day1k"])
+df_al1k["ThirtyDay"] = 1*2.7183818**(0.6931471/30*df_al1k["Day1k"])
+
 ## Multi-County
 
 ### Create Multiple Line Plot for Total by Count
-plt.figure(figsize = (6, 4))
-x = np.arange(len(df_al.Day))
-plt.plot(df_al.Day, df_al.TotalCount, color = "xkcd:neon green")
-plt.plot(df_br.Day, df_br.TotalCount, color = "r")
-plt.plot(df_da.Day, df_da.TotalCount, color = "y")
-plt.plot(df_hb.Day, df_hb.TotalCount, color = "m")
-plt.plot(df_or.Day, df_or.TotalCount, color = "g")
-plt.plot(df_pb.Day, df_pb.TotalCount, color = "tab:orange")
-plt.plot(df_pn.Day, df_pn.TotalCount, color = "tab:purple")
-plt.ylim(0, 7000)
+plt.figure(figsize = (16, 8))
+plt.plot(df_al25.Day25, df_al25.TotalCount, color = "xkcd:neon green")
+plt.plot(df_br25.Day25, df_br25.TotalCount, color = "r")
+plt.plot(df_da25.Day25, df_da25.TotalCount, color = "y")
+plt.plot(df_hb25.Day25, df_hb25.TotalCount, color = "m")
+plt.plot(df_or25.Day25, df_or25.TotalCount, color = "g")
+plt.plot(df_pb25.Day25, df_pb25.TotalCount, color = "tab:orange")
+plt.plot(df_pn25.Day25, df_pn25.TotalCount, color = "tab:purple")
+plt.plot(df_dv25.Day25, df_dv25.TotalCount, color = "tab:blue")
+plt.plot(df_al25.Day25, df_al25.OneDay, color = "0.75")
+plt.plot(df_al25.Day25, df_al25.TwoDay, color = "0.75")
+plt.plot(df_al25.Day25, df_al25.ThreeDay, color = "0.75")
+plt.plot(df_al25.Day25, df_al25.SevenDay, color = "0.75")
+plt.plot(df_al25.Day25, df_al25.ThirtyDay, color = "0.75")
+plt.ylim(25, 7000)
 plt.ylabel("Cumulative Cases")
+plt.yscale("log")
 plt.xlabel("Day Number")
-plt.xticks((x), df_al["Day"], rotation = 90)
-plt.legend(["Alachua", "Broward", "Dade", "Hillsborough", "Orange", "Palm Beach", "Pinellas"])
+plt.xticks(np.arange(len(df_al25.Day25), step = 5), np.arange(len(df_al25.Day25), step = 5), rotation = 90)
+plt.legend(["Alachua", "Broward", "Dade", "Hillsborough", "Orange", "Palm Beach", "Pinellas", "Duval"])
 plt.title("Florida DOH Confirmed COVID-19 Cases by Day")
 plt.savefig("_fig/county_total_count.jpeg", bbox_inches = "tight")
 
 ### Create Multiple Line Plot for Total by Count
-plt.figure(figsize = (6, 4))
-x = np.arange(len(df_al.Day))
-plt.plot(df_al.Day, df_al.TotalRate, color = "xkcd:neon green")
-plt.plot(df_br.Day, df_br.TotalRate, color = "r")
-plt.plot(df_da.Day, df_da.TotalRate, color = "y")
-plt.plot(df_hb.Day, df_hb.TotalRate, color = "m")
-plt.plot(df_or.Day, df_or.TotalRate, color = "g")
-plt.plot(df_pb.Day, df_pb.TotalRate, color = "tab:orange")
-plt.plot(df_pn.Day, df_pn.TotalRate, color = "tab:purple")
-plt.ylim(0, 250)
+plt.figure(figsize = (16, 8))
+plt.plot(df_al25.Day25, df_al25.TotalRate, color = "xkcd:neon green")
+plt.plot(df_br25.Day25, df_br25.TotalRate, color = "r")
+plt.plot(df_da25.Day25, df_da25.TotalRate, color = "y")
+plt.plot(df_hb25.Day25, df_hb25.TotalRate, color = "m")
+plt.plot(df_or25.Day25, df_or25.TotalRate, color = "g")
+plt.plot(df_pb25.Day25, df_pb25.TotalRate, color = "tab:orange")
+plt.plot(df_pn25.Day25, df_pn25.TotalRate, color = "tab:purple")
+plt.plot(df_dv25.Day25, df_dv25.TotalRate, color = "tab:blue")
+plt.plot(df_al25.Day25, df_al25.OneRate, color = "0.75")
+plt.plot(df_al25.Day25, df_al25.TwoRate, color = "0.75")
+plt.plot(df_al25.Day25, df_al25.ThreeRate, color = "0.75")
+plt.plot(df_al25.Day25, df_al25.SevenRate, color = "0.75")
+plt.plot(df_al25.Day25, df_al25.ThirtyRate, color = "0.75")
+plt.ylim(10, 250)
 plt.ylabel("Cumulative Cases Rate per 100k")
+plt.yscale("log")
 plt.xlabel("Day Number")
-plt.xticks((x), df_al["Day"], rotation = 90)
-plt.legend(["Alachua", "Broward", "Dade", "Hillsborough", "Orange", "Palm Beach", "Pinellas"])
+plt.xticks(np.arange(len(df_al25.Day25), step = 5), np.arange(len(df_al25.Day25), step = 5), rotation = 90)
+plt.legend(["Alachua", "Broward", "Dade", "Hillsborough", "Orange", "Palm Beach", "Pinellas", "Duval"])
 plt.title("Florida DOH Confirmed COVID-19 Cases by Day")
 plt.savefig("_fig/county_total_rate.jpeg", bbox_inches = "tight")
 
