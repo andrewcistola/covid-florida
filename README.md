@@ -1,5 +1,4 @@
-![](new_other.jpg)
-![](new_county.jpg)
+![](new_daily.jpg)
 
 # COVID-19 in Florida - Updated April 9, 2020 9:45pm
 The above chart represents Florida DOH confirmed COVID-19 Cases in Florida through April 9, 2020.
