@@ -9,7 +9,7 @@ import numpy as np # Incldued in every code script for DC!
 import scipy as st # Incldued in every code script for DC!
 
 ### Set working directory to subproject folder
-os.chdir("C:/Users/drewc/GitHub/covid-florida") # Set wd to project repository
+os.chdir("C:/Users/drewc/GitHub/covid-florida/_apr9") # Set wd to project repository
 
 #################### Break ####################
 
@@ -19,7 +19,7 @@ print("Section A: Start") # Print result
 ## Step 1: Import Libraries and Data
 
 ### Import Data
-df_case = pd.read_csv("_data/features.csv", encoding = "ISO-8859-1") # Import dataset saved as csv in _data folder
+df_case = pd.read_csv("_data/cases_raw.csv", encoding = "ISO-8859-1") # Import dataset saved as csv in _data folder
 
 ### Verify CMS
 df_case.info() # Get class, memory, and column info: names, data types, obs.
@@ -28,8 +28,9 @@ df_case.head() # Print first 5 observations
 ## Step 2: Prepare Data for Analysis
 
 ### Create Daily Count of New Cases
-df_rename =  df_case.rename(columns = {"ObjectID": "ID", "EventDate": "Date"}) # Rename column
-df_group = df_rename.groupby(["County", "Date"], as_index = False).count() # Group data By Columns and Sum
+df_rename =  df_case.rename(columns = {"ObjectId": "ID", "Case_": "Date"}) # Rename column
+df_drop = df_rename.filter(["County", "Date", "ID"]) # Keep only selected columns
+df_group = df_drop.groupby(["County", "Date"], as_index = False).count() # Group data By Columns and Sum
 df_add = pd.DataFrame([["Alachua", "3/6/20", 0]], columns = ["County", "Date", "ID"]) # Add mArch 6 date where no cases were reported statewide
 df_stack = pd.concat([df_add, df_group]) # Combine rows with same columns
 df_stack["Date"] = df_stack["Date"].astype("datetime64") # Change date type of column in data frame
@@ -57,7 +58,7 @@ for x in range(len(df_order.columns) - 1): l_days.append("Day" + str(x))
 #### Hit Enter in Terminal Manually ####
 
 df_order.columns = l_days # Add list of County and Days as Column names for ordered data frame
-df_daily = df_order.set_index("County") # Reset index as County variable and rename to daily
+df_daily = df_order # Reset index as County variable and rename to daily
 
 ### Verify
 df_daily.to_csv(r"_data/daily_raw.csv") # Export to csv for an easy to read table
@@ -77,9 +78,6 @@ print("Section B: Start") # Print result
 ### Import Libraries
 import math as mt # Basic Math library
 import matplotlib.pyplot as plt # Standard graphing library
-
-### Import Data
-df_daily = pd.read_csv("_data/daily_stage.csv", encoding = "ISO-8859-1") # Import dataset saved as csv in _data folder
 
 ### Verify CMS
 df_daily.info() # Get class, memory, and column info: names, data types, obs.
@@ -143,9 +141,6 @@ df_ln["TotalRate"] = df_ln["Rate"].cumsum()
 df_fl.to_csv(r"_data/florida_raw.csv") # Clean in excel and select variable
 df_al.to_csv(r"_data/alachua_raw.csv") # Clean in excel and select variable
 
-df_fl = pd.read_csv("_apr8/_data/florida_raw.csv", encoding = "ISO-8859-1") # Import dataset saved as csv in _data folder
-df_al = pd.read_csv("_apr8/_data/alachua_raw.csv", encoding = "ISO-8859-1") # Import dataset saved as csv in _data folder
-
 ## Step 4: Create Visuals and Outputs
 
 ## Alachua County
@@ -155,11 +150,11 @@ plt.figure()
 x = np.arange(len(df_al.Day))
 plt.bar((x), df_al.Cases, color = 'xkcd:neon green', width = 0.4)
 plt.xticks((x), df_al["Day"], rotation = 90)
-plt.ylabel("Daily Cases Rate per 100k")
+plt.ylabel("Daily Cases")
 plt.xlabel("Day Number")
 plt.legend(["Alachua"])
 plt.title("Florida DOH Confirmed COVID-19 Cases by Day")
-plt.savefig("_apr8/_fig/alachua_daily_count.jpeg", bbox_inches = "tight")
+plt.savefig("_fig/alachua_daily_count.jpeg", bbox_inches = "tight")
 
 ### Create Barplot for New Cases by Rate
 plt.figure()
@@ -170,7 +165,7 @@ plt.ylabel("Daily Cases Rate per 100k")
 plt.xlabel("Day Number")
 plt.legend(["Alachua"])
 plt.title("Florida DOH County Confirmed COVID-19 Cases by Day")
-plt.savefig("_apr8/_fig/alachua_daily_rate.jpeg", bbox_inches = "tight")
+plt.savefig("_fig/alachua_daily_rate.jpeg", bbox_inches = "tight")
 
 ## Florida 
 
@@ -183,7 +178,7 @@ plt.ylabel("Daily Cases")
 plt.xlabel("Day Number")
 plt.legend(["Florida"])
 plt.title("Florida DOH Confirmed COVID-19 Cases by Day")
-plt.savefig("_apr8/_fig/florida_daily_count.jpeg", bbox_inches = "tight")
+plt.savefig("_fig/florida_daily_count.jpeg", bbox_inches = "tight")
 
 ### Create Barplot for New Cases by Rate
 plt.figure()
@@ -194,12 +189,12 @@ plt.ylabel("Daily Cases Rate per 100k")
 plt.xlabel("Day Number")
 plt.legend(["Florida"])
 plt.title("Florida DOH Confirmed COVID-19 Cases by Day")
-plt.savefig("_apr8/_fig/florida_daily_rate.jpeg", bbox_inches = "tight")
+plt.savefig("_fig/florida_daily_rate.jpeg", bbox_inches = "tight")
 
 ## Multi-County
 
 ### Create Multiple Line Plot for Total by Count
-plt.figure()
+plt.figure(figsize = (6, 4))
 x = np.arange(len(df_al.Day))
 plt.plot(df_al.Day, df_al.TotalCount, color = "xkcd:neon green")
 plt.plot(df_br.Day, df_br.TotalCount, color = "r")
@@ -208,15 +203,16 @@ plt.plot(df_hb.Day, df_hb.TotalCount, color = "m")
 plt.plot(df_or.Day, df_or.TotalCount, color = "g")
 plt.plot(df_pb.Day, df_pb.TotalCount, color = "tab:orange")
 plt.plot(df_pn.Day, df_pn.TotalCount, color = "tab:purple")
+plt.ylim(0, 7000)
 plt.ylabel("Cumulative Cases")
 plt.xlabel("Day Number")
 plt.xticks((x), df_al["Day"], rotation = 90)
 plt.legend(["Alachua", "Broward", "Dade", "Hillsborough", "Orange", "Palm Beach", "Pinellas"])
 plt.title("Florida DOH Confirmed COVID-19 Cases by Day")
-plt.savefig("_apr8/_fig/county_total_count.jpeg", bbox_inches = "tight")
+plt.savefig("_fig/county_total_count.jpeg", bbox_inches = "tight")
 
 ### Create Multiple Line Plot for Total by Count
-plt.figure()
+plt.figure(figsize = (6, 4))
 x = np.arange(len(df_al.Day))
 plt.plot(df_al.Day, df_al.TotalRate, color = "xkcd:neon green")
 plt.plot(df_br.Day, df_br.TotalRate, color = "r")
@@ -225,12 +221,13 @@ plt.plot(df_hb.Day, df_hb.TotalRate, color = "m")
 plt.plot(df_or.Day, df_or.TotalRate, color = "g")
 plt.plot(df_pb.Day, df_pb.TotalRate, color = "tab:orange")
 plt.plot(df_pn.Day, df_pn.TotalRate, color = "tab:purple")
+plt.ylim(0, 250)
 plt.ylabel("Cumulative Cases Rate per 100k")
 plt.xlabel("Day Number")
 plt.xticks((x), df_al["Day"], rotation = 90)
 plt.legend(["Alachua", "Broward", "Dade", "Hillsborough", "Orange", "Palm Beach", "Pinellas"])
 plt.title("Florida DOH Confirmed COVID-19 Cases by Day")
-plt.savefig("_apr8/_fig/county_total_rate.jpeg", bbox_inches = "tight")
+plt.savefig("_fig/county_total_rate.jpeg", bbox_inches = "tight")
 
 ## Verify
 plt.show() # Show created plots
