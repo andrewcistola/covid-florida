@@ -1,0 +1,60 @@
+FLCharts COVID19 on 13 Apr 10 am
+Raw Data Documentation
+
+##########
+
+FLCharts Data Navigator Query 13Apr2020 1010am
+
+Most recent list of cases by county and date confirmed through April 12
+
+Raw file a downloaded as "features.csv"
+
+#####
+
+To replicate raw data file:
+
+Web Address = https://fdoh.maps.arcgis.com/apps/webappviewer/index.html?id=55e34acc061c4224b9cfd54278e22927
+
+Select = "Case Data Query"
+
+Select:
+	County = -empty-
+	Gender = -empty-
+	Jurisdiction = -empty-
+	Hospitalized  = (blank)
+	Case is on = (blank)
+	Result layer name = Case Data Query _Query result
+
+Press "Apply"
+
+Saved as _data/cases_raw.csv
+
+Wait
+
+Press "..." ("Featyre Actions")
+
+Press down arrow icon multiple times to load all results
+
+Wait
+
+Select "Export to CSV File"
+
+#####
+
+Address can also be selected by visiting:
+
+https://experience.arcgis.com/experience/96dd742462124fa0b38ddedb9b25e429
+
+Press menu in upper right corner
+
+Select "Data Navigator"
+
+##########
+
+FLCharts Daily Report 5Apr2020 250pm
+
+Updated infromation on publically available data
+
+https://floridadisaster.org/globalassets/covid19/dailies/covid-19-data---daily-report-2020-04-05-0945.pdf
+
+Report file a downloaded as "covid-19-data---daily-report-2020-04-05-0945"

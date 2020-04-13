@@ -1,10 +1,9 @@
 ![](new_daily.jpg)
 
-# COVID-19 in Florida - Updated April 9, 2020 9:45pm
-The above chart represents Florida DOH confirmed COVID-19 Cases in Florida through April 9, 2020.
+# COVID-19 in Florida - Updated April 13, 2020 1:15pm
 
 ### new_daily.csv
-This file contains the number of cases newly confirmed each day by County in Florida as well as statewide total through April 9, 2020. This dataset is created using the raw public file and then used to create visuals with code contained in this repository. Day 0 for Florida was March 2, 2020. 
+This file contains the number of cases newly confirmed each day by County in Florida as well as statewide total through the most recent data update. This dataset is created using the raw public file and then used to create visuals with code contained in this repository. Day 0 for Florida was March 2, 2020. 
 
 ## About this Repository
 This repository is a collection of open source resources developed to conduct retrospective analysis on confirmed cases of COVID-19 by the Florida Department of Health in 2020. 
