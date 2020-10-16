@@ -1,7 +1,3 @@
-﻿BOROUGH_GROUP,COVID_CASE_COUNT,COVID_CASE_RATE
-The Bronx,16419,1114.61
-Brooklyn,21580,795.32
-Manhattan,10862,577.99
-Queens,26204,1050.57
-Staten Island,5102,1011.3
-Citywide,80204,
+version https://git-lfs.github.com/spec/v1
+oid sha256:aa30e729ae3db12f79a5f4465632c4b11a4ac189690d736fc3963f6ed3192292
+size 181
