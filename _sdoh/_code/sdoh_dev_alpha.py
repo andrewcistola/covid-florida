@@ -1,5 +1,5 @@
 # Information
-label = "sdoh_mrfp"
+label = "sdoh_dev"
 path = "_sdoh/_code/"
 version = "_alpha"
 title = "SDOH and COVID-19 by Zip Code in Florida"
@@ -324,4 +324,3 @@ text_file.write("  test = " + sub_test + "\n") # Add two lines of blank text at 
 text_file.write("  Epochs = " + sub_epochs + "\n") # Add two lines of blank text at end of every section text
 text_file.write("####################" + "\n\n")
 text_file.close() # Close file
-

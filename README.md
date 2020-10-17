@@ -9,12 +9,12 @@ Each folder in the repository contains updated data through the date and time li
 ## Subrepositories
 This repository is setup in two different projects for different use purposes.
 
-### Daily Tracking 
+### Daily Tracking by County
 Subrepository label: `_daily` <br>
 This subrespotiory contains data and visuals for tracking daily cases and mortality from COVID-19 among Florida Counties. The latest update was April 13, 2020. 
 
-### Geographic Tracking
-Subrepository label: `_geo` <br>
+### Social Determinants by Zip Code
+Subrepository label: `_sdoh` <br>
 This subrepository contains data and visuals for tracking cases, hospitalizations, and mortality among zip codes and counties for the purpose of identifying socio-economic factors associated with variation in outcomes. 
 
 ## Repository Structure

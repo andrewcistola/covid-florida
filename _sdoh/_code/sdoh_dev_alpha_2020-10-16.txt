@@ -103,5 +103,3 @@ Warnings:
 ('DP05_0077PE', 'HISPANIC OR LATINO AND RACE Total population Not Hispanic or Latino White alone')
 
 ####################
-
-
