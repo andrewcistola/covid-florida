@@ -17,6 +17,12 @@ This subrespotiory contains data and visuals for tracking daily cases and mortal
 Subrepository label: `_sdoh` <br>
 This subrepository contains data and visuals for tracking cases, hospitalizations, and mortality among zip codes and counties for the purpose of identifying socio-economic factors associated with variation in outcomes. 
 
+### Other Repositories
+Non-florida data is collected from the following repositories:
+
+#### [Johns Hopkins University Center for Systems Science and Engineering: https://github.com/CSSEGISandData/COVID-19](https://github.com/CSSEGISandData/COVID-19)
+#### [New York City Department of Health and Mental Hygiene: https://github.com/nychealth/coronavirus-data](https://github.com/nychealth/coronavirus-data)
+
 ## Repository Structure
 The repository uses the following file organization and naming convenstions.
 
@@ -46,13 +52,7 @@ The repository uses the following file organization and naming convenstions.
 <br>`delta_` : fourth version of the file
 <br>etc...
 
-## Other Repositories
-Non-florida data is collected from the following repositories:
-
-#### [Johns Hopkins University Center for Systems Science and Engineering: https://github.com/CSSEGISandData/COVID-19](https://github.com/CSSEGISandData/COVID-19)
-#### [New York City Department of Health and Mental Hygiene: https://github.com/nychealth/coronavirus-data](https://github.com/nychealth/coronavirus-data)
-
-## Disclaimer
+### Disclaimer
 While the author (Andrew Cistola) is a Florida DOH employee and a University of Florida PhD student, these are NOT official publications by the Florida DOH, the University of Florida, or any other agency. 
 No information is included in this repository that is not available to any member of the public. 
 All information in this repository is available for public review and dissemination but is not to be used for making medical decisions. 
