@@ -29,25 +29,13 @@ The repository uses the following file organization and naming convenstions.
 <br>`_refs`: selected literature related to the project
 
 ### File Naming Structure:
-`prefix_topic_suffix_version.ext`
-
-#### Prefixes:
-`eco_`: Ecological predictor data files
-<br>`geo_`: Geographic data files
-<br>`cnn_`: Convolutional neural network with autoencoder scripts used for unstructured modelings
-<br>`dnn_`: Dense neural network with classitifcation scripts for structured modelings
-<br>`ml_`: Machine learning scripts using structured or unstructured models for feature selection
-<br>`stat_`: Statistical testing and traditional regression scripts for validation models
-<br>`plot_`: Visualization scripts for 2D displays including maps and figures
-
-#### Topics
-(To be added)
+`subrepo_suffix_version.ext`
 
 #### Suffixes:
 `dev_`: Development script for working in an IDE
 <br>`book_`: Jupyter notebook 
 <br>`stage_`: Data files that have been modified from raw source
-<br>`result_`: Text scripts displaying results from a model
+<br>`2020-01-01`: Text scripts displaying results output from a script are marked with date stamp they were created
 <br>`map_`: 2D geographic display
 <br>`graph_`: 2D chart or graph representing numeric data
 
