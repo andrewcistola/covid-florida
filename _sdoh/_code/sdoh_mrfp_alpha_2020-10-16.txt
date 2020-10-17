@@ -1,0 +1,107 @@
+####################
+
+COVID-19 by Zip Code in Florida
+_alpha
+DrewC!
+2020-10-16 18:28:08.480274
+
+####################
+
+Step 1: Raw Data Processing and Feature Engineering
+
+Florida Department of Health Positve COVID-19 Cases by Zip Code
+
+Feature labels: (quant, train, test) = (case rate per 100k, 95 percentile, top quintile)
+Feature engineeering: Pop > 500, Cases > 5, Only Non-NA
+
+              quant       train        test
+count    903.000000  903.000000  903.000000
+mean    1576.434288    0.050941    0.200443
+std     1394.977489    0.220000    0.400554
+min       81.344902    0.000000    0.000000
+25%      866.971246    0.000000    0.000000
+50%     1262.363352    0.000000    0.000000
+75%     1914.981149    0.000000    0.000000
+max    21872.116018    1.000000    1.000000
+
+        CASE_RATE       ZCTA
+417  21872.116018  ZCTA33128
+80   16820.762368  ZCTA32202
+425  12703.012332  ZCTA33136
+485  10713.192531  ZCTA33316
+89   10604.241697  ZCTA32212
+926   8501.541215  ZCTA34956
+775   6170.247133  ZCTA34142
+414   5978.013400  ZCTA33125
+555   5700.883998  ZCTA33493
+383   5537.660010  ZCTA33030
+
+2018 American Community Survey 5-Year Percent Estimates by Zip Code
+
+Features and observations: (Rows, Columns) = (903, 428)
+Feature engineeering: 75% nonNA, Median Imputed NA, Standard ScaledStep 2: Identify Predictors with Open Models
+
+####################
+
+Step 2: Identify Predictors with Open Models
+
+2018 American Community Survey 5-Year Percent Estimates by Zip Code
+
+Models:Principal Component AnalysisRandom ForestsRecursive feature Elimination
+Values: Eigenvectors, Gini Impurity, Boolean
+Thresholds: Mean, Mean, Cross Validation
+
+      Features     MaxEV      Gini   RFE
+0  DP02_0002PE  0.128632  0.003781  True
+1  DP02_0010PE  0.128631  0.003000  True
+2  DP02_0066PE  0.105185  0.020019  True
+3  DP04_0047PE  0.100412  0.004825  True
+4  DP03_0027PE  0.095702  0.003969  True
+5  DP02_0115PE  0.095542  0.030042  True
+
+                                 OLS Regression Results                                
+=======================================================================================
+Dep. Variable:                  quant   R-squared (uncentered):                   0.188
+Model:                            OLS   Adj. R-squared (uncentered):              0.180
+Method:                 Least Squares   F-statistic:                              23.04
+Date:                Fri, 16 Oct 2020   Prob (F-statistic):                    1.61e-35
+Time:                        21:59:42   Log-Likelihood:                         -8096.7
+No. Observations:                 903   AIC:                                  1.621e+04
+Df Residuals:                     894   BIC:                                  1.625e+04
+Df Model:                           9                                                  
+Covariance Type:            nonrobust                                                  
+===============================================================================
+                  coef    std err          t      P>|t|      [0.025      0.975]
+-------------------------------------------------------------------------------
+DP02_0066PE  -586.5031    123.116     -4.764      0.000    -828.133    -344.874
+DP04_0047PE   377.8902     79.771      4.737      0.000     221.329     534.451
+DP03_0027PE   419.1123    121.677      3.444      0.001     180.306     657.919
+DP02_0115PE   254.1865    103.987      2.444      0.015      50.099     458.274
+DP02_0071PE   -28.5829    114.190     -0.250      0.802    -252.694     195.528
+DP02_0012PE   174.7943     85.211      2.051      0.041       7.558     342.031
+DP03_0009PE   -56.0040     81.259     -0.689      0.491    -215.484     103.476
+DP02_0064PE    -8.5309    151.207     -0.056      0.955    -305.292     288.230
+DP05_0077PE  -244.1973    126.793     -1.926      0.054    -493.044       4.649
+==============================================================================
+Omnibus:                     1202.582   Durbin-Watson:                   0.200
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):           254462.888
+Skew:                           6.988   Prob(JB):                         0.00
+Kurtosis:                      84.042   Cond. No.                         5.41
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+
+('DP02_0066PE', 'EDUCATIONAL ATTAINMENT Population 25 years and over High school graduate or higher'), 
+('DP04_0047PE', 'HOUSING TENURE Occupied housing units Renter-occupied'), 
+('DP03_0027PE', 'OCCUPATION Civilian employed population 16 years and over Management, business, science, and arts occupations'), 
+('DP02_0115PE', 'LANGUAGE SPOKEN AT HOME Population 5 years and over Spanish Speak English less than very well""'), 
+('DP02_0071PE', 'DISABILITY STATUS OF THE CIVILIAN NONINSTITUTIONALIZED POPULATION Total Civilian Noninstitutionalized Population With a disability'), 
+('DP02_0012PE', 'HOUSEHOLDS BY TYPE Total households Nonfamily households Householder living alone 65 years and over'), 
+('DP03_0009PE', 'EMPLOYMENT STATUS Civilian labor force Unemployment Rate'), 
+('DP02_0064PE', "EDUCATIONAL ATTAINMENT Population 25 years and over Bachelor's degree"), 
+('DP05_0077PE', 'HISPANIC OR LATINO AND RACE Total population Not Hispanic or Latino White alone')
+
+####################
+
+
